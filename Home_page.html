@@ -1,36 +1,99 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Home</title>
-        <style>
-            #wrapper {
-                width: 100%;
-                margin: 0 auto;
-            }
+	<head>
+		<title>通識屋</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/main1.css?111" />
+	</head>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
 
-            #header {
-                height: 100px;
-                background-color: #F0F587
-            }
+			<!-- Header -->
+				<header id="header">
+					<div class="logo container">
+						<div>
+							<h1><a href="index.html" id="logo">通識屋</a></h1>
+						</div>
+					</div>
+				</header>
 
-            #main {
-                height: 400px;
-                background-color: #B6F8F8
-            }
+			<!-- Nav -->
+				<header id="header">
+					<h1>通識屋</h1>
+					<nav id="nav">
+						<ul>
+							<!--<li><a href="index.php">首頁</a></li>-->
+							<!--
+                            <li><a href="https://secretary.ncue.edu.tw/p/412-1006-1388.php?Lang=zh-tw" target="_blank">捐贈資訊</a></li>
+                            <li><a href="https://secretary.ncue.edu.tw/p/412-1006-1393.php?Lang=zh-tw" target="_blank">聯繫專人</a></li>
+                            <li><a href="don_list.php">芳名錄</a></li>
+                            <li><a href="donate.doc" target="_blank">下載捐款單</a></li>
+                            -->
+                            <li><a href="register.php">會員註冊</a></li>
+                            <li><a href="login.php">會員登入</a></li>						
+                        </ul>
+					</nav>
+				</header>
 
-            #footer {
-                height: 50px;
-                background-color: #05048D
-            }
-        </style>
-    </head>
-    <body>
-        <div id="wrapper">
-            <div id="header"></div>
-            <div id="main"></div>
-            <div id="footer"></div>
-        </div>
-    </body>
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<br>
+						<!--<a href="#main" class="button scrolly"><span style="font-size: 80%; line-height: 0.4">萬人點燈<br>(捐助扶助弱勢學生)</span></a>&nbsp&nbsp&nbsp<a href="#main" class="button scrolly"><span style="line-height: 1.8; margin: 0 1.4em 0">立即捐款</span></a> -->
+						
+						<h3>還在自己搶通識講座嗎?
+							<br>網速、手速跟不上?
+							<br>快來通識屋尋找自己喜歡的通識講座</h3><br>
+						<p>非會員只能瀏覽商品清單頁面，<br>如需進行操作或購買，<br>請登入會員或點擊右上方加入會員。</p>
+                        <br><br>
+                        <a href="donate.php?obj=8" class="button scrolly">買家專區</a>&nbsp&nbsp&nbsp<a href="donate.php" class="button scrolly">賣家登入</a>
+					</div>
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-12">
+
+								<!-- Highlight -->
+									<section class="box highlight">
+										<ul class="special">
+											<li><a href="donate.php?obj=1" class="icon solid"><span class="featured"><img src="images/1.jpg" alt="" /></span></a></li>
+											<li><a href="donate.php?obj=8" class="icon solid"><span class="featured"><img src="images/2.jpg" alt="" /></span></a></li>
+											<li><a href="donate.php?obj=3" class="icon solid"><span class="featured"><img src="images/3.jpg" alt="" /></span></a></li>
+											<li><a href="donate.php?obj=9" class="icon solid"><span class="featured"><img src="images/4.jpg" alt="" /></span></a></li>
+										</ul>
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="item">
+							<img src="images/logo.jpg" alt="" />
+					</div>
+					<div class="item">
+							<h2>地址：50007彰化市進德路一號</h2>
+							<h2>Address: No.1, Jin-De Road, Changhua City</h2>
+							<h2>總機電話：04-7232105</h2>
+					</div>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main1.js"></script>
+
+	</body>
 </html>
