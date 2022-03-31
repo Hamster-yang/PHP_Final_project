@@ -2694,7 +2694,7 @@ input, select, textarea {
 			}
 
 /* Banner */
-
+/*
 	#banner {
 		/*
 		position: relative;
@@ -2704,8 +2704,8 @@ input, select, textarea {
 		background-size: auto, auto, cover;
 		z-index: 1;
 		padding: 11em 0;
-		*/
-	}
+		*//*
+	}*/
 
 		#banner .content {
 			position: relative;
@@ -2943,10 +2943,10 @@ input, select, textarea {
 			}
 
 		/* Banner */
-
+/*
 			#banner {
                 
-			}
+			}*/
 
 		/* Nav */
 
