@@ -34,6 +34,89 @@
         <!--中文錯誤訊息-->
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js "></script>
         <title>Login</title>
+        
+        <script>
+            $(document).ready(function($) {
+                //for select
+                $.validator.addMethod("notEqualsto", function(value, element, arg) {
+                    return arg != value;
+                }, "您尚未選擇!");
+            
+                $("#form1").validate({
+                    submitHandler: function(form) {
+                        //alert("success!");
+                        form.submit();
+                    },
+                    rules: {
+                        username: {
+                            required: true
+                        },
+                        password: {
+                            required: true,
+                        }
+                    },
+                    messages: {
+                        username: {
+                            required: "*必填"
+                        },
+                        password: {
+                            required: "*必填"
+                        }
+                    }
+                });
+
+                $("#form2").validate({
+                    submitHandler: function(form) {
+                        //alert("success!");
+                        form.submit();
+                    },
+                    rules: {
+                        fullname: {
+                            required: true
+                        },
+                        username2: {
+                            required: true,
+                            minlength: 4,
+                            maxlength: 10
+                        },
+                        password2: {
+                            required: true
+                        },
+                        comfirm_password: {
+                            required: true,
+                            equalTo: "#password2"
+                        },
+                    },
+                    messages: {
+                        fullname: {
+                            required: "*必填"
+                        },
+                        username2: {
+                            required: "*必填",
+                            minlength: "帳號最少要4個字",
+                            maxlength: "帳號最長10個字"
+                        },
+                        password2: {
+                            required: "*必填"
+                        },
+                        comfirm_password: {
+                            equalTo: "兩次密碼不相符"
+                        },
+                    }
+                });
+            });
+            </script>
+            <style type="text/css">
+                .error {
+                     color: #D82424;
+                     font-weight: normal;
+                     font-family: "微軟正黑體";
+                     display: inline;
+                     padding: 1px;
+                }
+            </style>
+            
+
     </head>
 
     <body>
@@ -47,13 +130,14 @@
             <div class="login">  
             
             <h3>登入 Login</h3>
-
-            <form action="用戶管理.php">
+            <!--<form action="用戶管理.php" id="form1">-->
+            <form action="test.html" id="form1">
                 <input type="text" id="username" name="username" placeholder="帳號" required>
                 <div class="tab"></div>
                 <input type="text" id="password" name="password" placeholder="密碼" required>
                 <div class="tab"></div>
-                <input type="submit" value="登入" class="submit" onclick="location.href='test.html'">
+                <input type="submit" value="登入" class="submit">
+                <!--<input type="submit" value="登入" class="submit" onclick="location.href='test.html'">-->
             </form>  
 
             <h5 onclick="show_hide()">註冊帳號</h5>
@@ -69,7 +153,7 @@
             
             <h3>註冊 Sign Up</h3>
 
-            <form action="用戶管理.php">
+            <form action="test.html" id="form2">
                 <input type="text" id="fullname" name="fullname" placeholder="使用者全名" required>
                 <div class="tab"></div>
                 <input type="text" id="username2" name="username" placeholder="帳號" required>
