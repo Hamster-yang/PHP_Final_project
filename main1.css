@@ -2744,7 +2744,10 @@ input, select, textarea {
 				background: #418AB3 !important;
 				border: solid 4px #214460;
 				border-color: rgba(33, 68, 96, 1);
+				font-size: 5em;
+				/*
 				font-size: 1.9em;
+				*/
 			}
 
 				#banner .content .button:hover {
