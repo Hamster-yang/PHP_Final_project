@@ -35,6 +35,13 @@ a:hover, a:active {
     list-style: none;
 }
 
+.astext{
+    background:none;
+    border:none;
+    padding:0;
+    cursor: pointer;
+}
+
 /*--------------------------------------------------------------
 # Helper Utilities
 --------------------------------------------------------------*/
