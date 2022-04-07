@@ -24,6 +24,21 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#btn_show").on("click",function(){
+                $("#inner").toggle();
+            })
+          
+        });
+    </script>
 </head>
 <body class="courses-page">
     <div class="page-header">
@@ -38,7 +53,7 @@
                         <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
                             <div class="header-bar-search">
                                 <form class="flex align-items-stretch">
-                                    <input type="search" placeholder="What would you like to learn?">
+                                    <input type="search" placeholder="What lesson you are looking for?">
                                     <button type="submit" value="" class="flex justify-content-center align-items-center"><i class="fa fa-search"></i></button>
                                 </form>
                             </div><!-- .header-bar-search -->
@@ -119,40 +134,42 @@
             </div><!-- .col -->
         </div><!-- .row -->
 
+       
+
         <div class="row">
             <div class="col-md-12">
                 <div class="featured-courses courses-wrap">
                     <div class="row mx-m-25">
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">憶起來學著「懂」攝影吧</a></h2>
-    
+                                            <h2 class="entry-title"><button class="astext" id="btn_show" name="btn_show">憶起來學著「懂」攝影吧</button></h2>
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author">邱旭蓮、何俊霖 </div>
-    
                                                 <div class="course-date">111/04/10</div>
                                             </div><!-- .course-date -->
                                         </header><!-- .entry-header -->
                                         <div class="course-cost">
                                             $10000
                                         </div><!-- .course-cost -->
+                                        <div id="inner" name="inner" style="display:none">
+                                            comming soon..........
+                                        </div>
                                     </footer><!-- .entry-footer -->
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">哲學星期五-原住民狩獵文化</a></h2>
+                                            <h2 class="entry-title"><button class="astext">哲學星期五-原住民狩獵文化</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author"> 江人頡 </div>
-                                                <br></br>
                                                 <div class="course-date"> 111/04/13</div>
                                             </div><!-- .course-date -->
                                         </header><!-- .entry-header -->
@@ -163,12 +180,12 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">媒體教我的智慧</a></h2>
+                                            <h2 class="entry-title"><button class="astext">媒體教我的智慧</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author"> 線上通識講座 </div>
@@ -183,12 +200,12 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">心智圖高效學習法</a></h2>
+                                            <h2 class="entry-title"><button class="astext">心智圖高效學習法</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author">王聖凱 </div>
@@ -203,12 +220,12 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">不可不知的租屋大小事</a></h2>
+                                            <h2 class="entry-title"><button class="astext">不可不知的租屋大小事</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author">簡珣 </div>
@@ -223,12 +240,12 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">程式人生與退休人生</a></h2>
+                                            <h2 class="entry-title"><button class="astext">程式人生與退休人生</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author"> 陳明熒 </div>
@@ -244,12 +261,12 @@
                             </div><!-- .course-content -->
                         </div><!-- .col -->
                         
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">體會真實，付諸實踐</a></h2>
+                                            <h2 class="entry-title"><button class="astext">體會真實，付諸實踐</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author"> 郭彥甫 </div>
@@ -264,12 +281,12 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">跨越古今文學，提升閱讀與寫作力的故事課</a></h2>
+                                            <h2 class="entry-title"><button class="astext">跨越古今文學，提升閱讀與寫作力的故事課</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author">  高詩佳 </div>
@@ -284,12 +301,12 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">不可以色色</a></h2>
+                                            <h2 class="entry-title"><button class="astext">不可以色色</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author">  邱雅沂 </div>
@@ -304,12 +321,12 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="course-content">
                                 <div class="course-content-wrap">
                                     <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
                                         <header class="entry-header">
-                                            <h2 class="entry-title"><a href="#">神鳥保衛戰</a></h2>
+                                            <h2 class="entry-title"><button class="astext">神鳥保衛戰</button></h2>
     
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author">  蔣功國 </div>
@@ -324,8 +341,10 @@
                                 </div><!-- .course-content-wrap -->
                             </div><!-- .course-content -->
                         </div><!-- .col -->
+
                     </div><!-- .row -->
                 </div><!-- .featured-courses -->
+                
 
                 <div class="pagination flex flex-wrap justify-content-between align-items-center">
                     <div class="col-12 col-lg-4 order-2 order-lg-1 mt-3 mt-lg-0">
