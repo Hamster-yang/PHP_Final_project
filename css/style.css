@@ -2730,3 +2730,38 @@ p.footer-copyright {
 .footer-bar-nav ul li a:hover {
     color: #34d986;
 }
+
+.panel {
+    margin-bottom:20px;
+    background-color:#fff;
+    border:1px solid transparent;
+    border-radius:10px;
+    -webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);
+    box-shadow:0 1px 1px rgba(0,0,0,.05)
+}
+
+.panel-primary {
+    border-color:#34d986;
+}
+
+.panel-heading {
+    padding:10px 15px;
+    border-bottom:solid transparent;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+
+.panel-primary>.panel-heading {
+    color:#fff;
+    background-color:#34d986;
+    border-color:#34d986;
+}
+
+.panel-body {
+    padding:15px;
+}
+
+.td1 {
+    font-size: 15px;
+    line-height: 60px;
+}
