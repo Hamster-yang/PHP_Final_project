@@ -86,27 +86,47 @@
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
         </div><!-- .row -->
-
-        <div class="row">
-            <div class="col-12">
-                <div class="contact-form">
-                    <h3>商品資訊</h3>
-
-                    <form>
-                        <input type="text" placeholder="商品資訊1">
-                        <input type="text" placeholder="商品資訊2">
-                        <input type="text" placeholder="商品資訊3">
-                        <input type="text" placeholder="商品資訊4">
-                        <input type="text" placeholder="商品資訊5">
-                        <input type="text" placeholder="商品資訊6">
-                        <input type="text" placeholder="商品資訊7">
-                        <input type="text" placeholder="商品資訊8">
-
-                        <input type="submit" value="新增">
+        
+        <div class="contact-form">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 style="color: white;">商品資訊</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline" method="post" enctype="multipart/form-data">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td class="col-md-2 td1 text-center">通識名稱</td>
+                                <td class="col-md-10 text-center" style="padding-top: 0px;">
+                                    <input type="text" placeholder="Ex.阿美族部落參訪(限原住民學生參加)">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">講師</td>
+                                <td class="col-md-10 text-center" style="padding-top: 0px;">
+                                    <input type="text" placeholder="Ex.都蘭部落講師/基拉歌賽部落講師">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">上架時間</td>
+                                <td class="col-md-10 text-center" style="padding-top: 0px;">
+                                    <input type="text" placeholder="月 日, 年">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">費用</td>
+                                <td class="col-md-10 text-center" style="padding-top: 0px;">
+                                    <input type="text" placeholder="$100">
+                                </td>
+                            </tr>
+                        </table>
                     </form>
-                </div><!-- .contact-form -->
-            </div><!-- .col -->
-        </div><!-- .row -->
+                </div>
+            </div>
+            <button type="button" class="btn btn-success">
+                <i class="fa fa-plus"></i> 新增
+            </button>
+        </div><!-- .contact-form -->
     </div><!-- .container -->
 
     <div class="clients-logo">
