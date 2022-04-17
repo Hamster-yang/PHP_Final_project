@@ -4,6 +4,7 @@
   
   body{
     background-color: white;
+    background-image: url("../images/hero-bg.jpg");
   }
   
   #username, #password, h3, #fullname, #comfirm_password,#username2, #password2{
@@ -22,6 +23,11 @@
     color: black;
   }
   
+  h2{
+    color:gainsboro;
+
+  }
+
   #container1, #container2{
     
     padding: 10px;
@@ -45,6 +51,7 @@
     margin: auto;
     top: 100px;
     text-align:center; 
+    
   }
   
   .submit{
