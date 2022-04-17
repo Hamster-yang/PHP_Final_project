@@ -4,14 +4,14 @@
   
   body{
     background-color: white;
-    background-image: url("../images/hero-bg.jpg");
+    background-image: url("../images/hero-bg_login.jpg");
   }
   
   #username, #password, h3, #fullname, #comfirm_password,#username2, #password2{
     width: 200px;
     height: 20px;
     margin: 10px;
-    color: #df5334;
+    color: #A1A1A1	;
   }
   
   h5{
@@ -24,7 +24,7 @@
   }
   
   h2{
-    color:gainsboro;
+    color: #EDEDED;
 
   }
 
@@ -35,7 +35,7 @@
     height: 300px;
     background-color: white;
     border-radius: 5px;
-    border-top: 10px solid #df5334;
+    border-top: 10px solid #A1A1A1	;
     box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
     
     /*定位對齊*/
@@ -56,7 +56,7 @@
   
   .submit{
     color: white;  
-    background: #df5334;
+    background: #A1A1A1	;
     width: 200px;
     height: 30px;
     margin: 10px;
