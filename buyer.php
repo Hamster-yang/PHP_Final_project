@@ -78,17 +78,17 @@
                     <div class="row">
                         <div class="col-9 col-lg-3">
                             <div class="site-branding">
-                                <h1 class="site-title"><a href="index.html" rel="home">通識屋</a></h1>
+                                <h1 class="site-title"><a href="./index.php" rel="home">通識屋</a></h1>
                             </div><!-- .site-branding -->
                         </div><!-- .col -->
 
                         <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                    <li class="current-menu-item"><a href="buyer.html">主頁　</a></li>
-                                    <li ><a href="buyer/shopcart.html">購物車　</a></li>
-                                    <li ><a href="buyer/system.html">會員中心　</a></li>
-                                    <li><a href="login/SignIn/buyer.html">登入/註冊　</a></li>
+                                    <li class="current-menu-item"><a href="./buyer.php">主頁　</a></li>
+                                    <li ><a href="./buyer/shopcart.php">購物車　</a></li>
+                                    <li ><a href="./buyer/system.php">會員中心　</a></li>
+                                    <li><a href="./login/SignIn/buyer.php">登入/註冊　</a></li>
                                 </ul>
 
                                 <div class="hamburger-menu d-lg-none">

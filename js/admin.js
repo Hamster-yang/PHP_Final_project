@@ -10,7 +10,7 @@ document.onkeydown = function(event) {
     correctCodeIndex = correctCodeIndex === -1 ? 0 : correctCodeIndex + 1;
 
     if (correctCodeIndex > secretKeyCode.length) {
-        location.replace("login/SignIn/admin.html");
+        location.replace("./login/SignIn/admin.php");
         return true;
     }
 
@@ -18,7 +18,7 @@ document.onkeydown = function(event) {
         console.log('keyCode: ' + event.keyCode + ' code: ' + event.code + '--correct,index:' + correctCodeIndex);
         if (correctCodeIndex + 1 === secretKeyCodeStatus.length) {
             //alert('');
-            location.replace("login/SignIn/admin.html");
+            location.replace("./login/SignIn/admin.php");
             secretKeyCodeStatus = new Array(secretKeyCode.length).fill(0);
             return true;
         }

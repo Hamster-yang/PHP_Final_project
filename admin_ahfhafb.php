@@ -35,17 +35,17 @@
                     <div class="row">
                         <div class="col-9 col-lg-3">
                             <div class="site-branding">
-                                <h1 class="site-title"><a href="index.html" rel="home">通識屋</a></h1>
+                                <h1 class="site-title"><a href="./index.php" rel="home">通識屋</a></h1>
                             </div><!-- .site-branding -->
                         </div><!-- .col -->
 
                         <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                    <li class="current-menu-item"><a href="admin_ahfhafb.html">主頁　</a></li>
-                                    <li><a href="admin_ahfhafb/page1.html">修改會員資料　</a></li>
-                                    <li><a href="admin_ahfhafb/page2.html">商品管理　</a></li>
-                                    <li><a href="index.html">登出　</a></li>
+                                    <li class="current-menu-item"><a href="./admin_ahfhafb.php">主頁　</a></li>
+                                    <li><a href="./admin_ahfhafb/page1.php">修改會員資料　</a></li>
+                                    <li><a href="./admin_ahfhafb/page2.php">商品管理　</a></li>
+                                    <li><a href="./index.php">登出　</a></li>
                                     
                                 </ul>
 
@@ -57,7 +57,7 @@
                                 </div><!-- .hamburger-menu -->
 
                                 <div class="header-bar-cart">
-                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="　"></span></a>
+                                    <a href="" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="　"></span></a>
                                 </div><!-- .header-bar-search -->
                                 
 
@@ -86,7 +86,7 @@
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href="#"><i class="fa fa-home"></i>admin管理系統</a></li>
+                        <li><a href=""><i class="fa fa-home"></i>admin管理系統</a></li>
                         <li>主頁</li>
                     </ul>
                 </div><!-- .breadcrumbs -->

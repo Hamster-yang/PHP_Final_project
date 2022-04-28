@@ -44,16 +44,16 @@
                     <div class="row">
                         <div class="col-9 col-lg-3">
                             <div class="site-branding">
-                                <h1 class="site-title"><a href="index.html" rel="home">通識屋</a></h1>
+                                <h1 class="site-title"><a href="./index.php" rel="home">通識屋</a></h1>
                             </div><!-- .site-branding -->
                         </div><!-- .col -->
 
                         <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                    <li class="current-menu-item"><a href="seller.html">上架商品清單　</a></li>
-                                    <li ><a href="seller/add.html">新增上架商品　</a></li>
-                                    <li><a href="index.html">登出　</a></li>
+                                    <li class="current-menu-item"><a href="./seller.php">上架商品清單　</a></li>
+                                    <li ><a href="./seller/add.php">新增上架商品　</a></li>
+                                    <li><a href="./index.php">登出　</a></li>
                                 </ul>
 
                                 <div class="hamburger-menu d-lg-none">

@@ -2,14 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../../css/login.css" />
-        <script>
-            function link_signup() {
-                window.location.href="../../Login/signup.html";
-            }
-            function link_index() {
-                window.location.href="../../index.html";
-            }
-        </script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
         <!--additional method - for checkbox .. ,require_from_group method ...-->
@@ -21,6 +14,7 @@
         <script>
             $(document).ready(function($) {
                 //for select
+                /*
                 $.validator.addMethod("notEqualsto", function(value, element, arg) {
                     return arg != value;
                 }, "您尚未選擇!");
@@ -32,59 +26,52 @@
                     },
                     rules: {
                         username: {
-                            required: true
+                            required: true,
+                            notEqualsto: "admin",
                         },
                         password: {
                             required: true,
+                            notEqualsto: "s0954",
                         }
                     },
                     messages: {
                         username: {
-                            required: "*必填"
+                            required: "*必填",
+                            notEqualsto:"帳號錯誤"
                         },
                         password: {
-                            required: "*必填"
+                            required: "*必填",
+                            notEqualsto:"密碼錯誤"
                         }
                     }
-                });
-
-                $("#form2").validate({
-                    submitHandler: function(form) {
-                        //alert("success!");
-                        form.submit();
-                    },
-                    rules: {
-                        fullname: {
-                            required: true
-                        },
-                        username2: {
-                            required: true,
-                            minlength: 4,
-                            maxlength: 10
-                        },
-                        password2: {
-                            required: true
-                        },
-                        comfirm_password: {
-                            required: true,
-                            equalTo: "#password2"
-                        },
-                    },
-                    messages: {
-                        fullname: {
-                            required: "*必填"
-                        },
-                        username2: {
-                            required: "*必填",
-                            minlength: "帳號最少要4個字",
-                            maxlength: "帳號最長10個字"
-                        },
-                        password2: {
-                            required: "*必填"
-                        },
-                        comfirm_password: {
-                            equalTo: "兩次密碼不相符"
-                        },
+                });*/
+                $("#form1").submit(function() {
+                    var message = "";
+                    var username = $('#username').val();
+                    var password = $("#password").val();
+                    
+                    if(username == "")
+                        message = "帳號不可為空";
+                    else if(password == "")
+                        message = "密碼不可為空";
+                    
+                    if(message)
+                    {
+                        $("#message").html(message);
+                        $("#username").focus();
+                        return false;
+                    }
+                    if ($("#username").val() != "admin") 
+                    {
+                        $("#message").html("帳號或密碼錯誤");
+                        $("#username").focus();
+                        return false;
+                    }
+                    if($("#password").val() != "admin123456")
+                    {
+                        $("#message").html("帳號或密碼錯誤");
+                        $("#username").focus();
+                        return false;
                     }
                 });
             });
@@ -98,13 +85,21 @@
                      padding: 1px;
                 }
             </style>
-            
+            <style type="text/css">
+                #message {
+                color: #D82424;
+                font-weight: normal;
+                font-family: "微軟正黑體";
+                display: inline;
+                padding: 1px;
+                }
+                </style>
 
     </head>
 
     <body>
         <div class="system_name">
-        <h2>.</h2>
+        <h2></h2>
         </div>
         
         <div class="login_page">
@@ -112,22 +107,23 @@
 
             <div class="login">  
             
-            <h3>登入 Sign In</h3>
+            <h3>admin Login</h3>
             <!--<form action="用戶管理.php" id="form1">-->
-            <form action="../../buyer.html" id="form1">
+            <form action="../../admin_ahfhafb.php" id="form1">
                 <input type="text" id="username" name="username" placeholder="帳號" required>
                 <div class="tab"></div>
                 <input type="password" id="password" name="password" placeholder="密碼" required>
                 <div class="tab"></div>
+                <div id="message" class="form-group"></div>
                 <input type="submit" value="登入" class="submit">
                 <!--<input type="submit" value="登入" class="submit" onclick="location.href='test.html'">-->
             </form>  
-
-            <h5 onclick="link_signup()">註冊帳號</h5>
-            <h5 onclick="link_index()">回首頁</h5>
+            
             </div><!-- login end-->
         </div><!-- container1 end-->
         </div><!-- login_page end-->
         
+        
+            
     </body>
 </html>

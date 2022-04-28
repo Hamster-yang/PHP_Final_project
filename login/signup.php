@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../../css/login.css" />
+        <link rel="stylesheet" href="../css/login.css" />
         <script>
-            function link_signup() {
-                window.location.href="../../Login/signup.html";
+            function link_signin() {
+                window.location.href="./SignIn/buyer.php";
             }
             function link_index() {
-                window.location.href="../index.html";
+                window.location.href="../index.php";
             }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -88,17 +88,27 @@
                     }
                 });
             });
-            </script>
-            <style type="text/css">
-                .error {
-                     color: #D82424;
-                     font-weight: normal;
-                     font-family: "微軟正黑體";
-                     display: inline;
-                     padding: 1px;
-                }
-            </style>
-            
+        </script>
+        <style type="text/css">
+            .error {
+                    color: #D82424;
+                    font-weight: normal;
+                    font-family: "微軟正黑體";
+                    display: inline;
+                    padding: 1px;
+            }
+        </style>
+        <style>
+            #container1{
+                visibility: hidden;   /*剛開始消失*/
+                height: 400px;
+            }
+            #container2{
+                visibility: visible;   /*剛開始消失*/
+                height: 400px;
+            }
+        </style>
+        
 
     </head>
 
@@ -107,27 +117,31 @@
         <h2></h2>
         </div>
         
-        <div class="login_page">
-        <div id="container1">
-
-            <div class="login">  
-            
-            <h3>登入 Sing In</h3>
-            <!--<form action="用戶管理.php" id="form1">-->
-            <form action="../../seller.html" id="form1">
-                <input type="text" id="username" name="username" placeholder="帳號" required>
-                <div class="tab"></div>
-                <input type="password" id="password" name="password" placeholder="密碼" required>
-                <div class="tab"></div>
-                <input type="submit" value="登入" class="submit">
-                <!--<input type="submit" value="登入" class="submit" onclick="location.href='test.html'">-->
-            </form>  
-
-            <h5 onclick="link_signup()">註冊帳號</h5>
-            <h5 onclick="link_index()">回首頁</h5>
-            </div><!-- login end-->
-        </div><!-- container1 end-->
-        </div><!-- login_page end-->
         
+        <div class="signup_page">
+        <div id="container2">
+
+            <div class="signup">  
+            
+            <h3>註冊 Sign Up</h3>
+
+            <form action="./SignIn/buyer.php" id="form2">
+                <input type="text" id="fullname" name="fullname" placeholder="使用者全名" required>
+                <div class="tab"></div>
+                <input type="text" id="username2" name="username" placeholder="帳號" required>
+                <div class="tab"></div>
+                <input type="password" id="password2" name="password" placeholder="密碼" required>
+                <div class="tab"></div>
+                <input type="password" id="comfirm_password" name="comfirm_password" placeholder="確認密碼" required>
+                <div class="tab"></div>            
+                <input type="submit" value="註冊" class="submit">
+            </form>  
+            
+            <h5 onclick="link_signin()">登入帳號</h5>
+            <h5 onclick="link_index()">回主頁</h5>
+            </div><!-- signup end-->
+        </div><!-- container2 end-->
+        </div><!-- signup_page end--> 
+
     </body>
 </html>

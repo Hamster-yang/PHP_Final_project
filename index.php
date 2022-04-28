@@ -44,7 +44,7 @@
                     <div class="row">
                         <div class="col-9 col-lg-3">
                             <div class="site-branding">
-                                <h1 class="site-title"><a href="index.html" rel="home">通識屋</a></h1>
+                                <h1 class="site-title"><a href="./index.php" rel="home">通識屋</a></h1>
                             </div><!-- .site-branding -->
                         </div><!-- .col -->
 
@@ -53,8 +53,8 @@
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                                     <li class="current-menu-item"><a href="">主頁　</a></li>
                                     <li ><a href="https://apss.ncue.edu.tw/sign_up/index.php" target="_blank">彰師大通識網站　</a></li>
-                                    <li ><a href="login/signup.html">新會員註冊　</a></li>
-                                    <li><a href="login/SignIn/buyer.html">會員登入　</a></li>
+                                    <li ><a href="./login/signup.php">新會員註冊　</a></li>
+                                    <li><a href="./login/SignIn/buyer.php">會員登入　</a></li>
                                 </ul>
                                 <div class="hamburger-menu d-lg-none">
                                     <span></span>
@@ -88,11 +88,11 @@
                             </div><!-- .entry-content -->
 
                             <footer class="entry-footer read-more">
-                                <a href="buyer.html">買家專區</a>
+                                <a href="./buyer.php">買家專區</a>
                                 
                             </footer><!-- .entry-footer -->
                             <footer class="entry-footer read-more">
-                                <a href="login/SignIn/seller.html">賣家登入</a>
+                                <a href="./login/SignIn/seller.php">賣家登入</a>
                             </footer><!-- .entry-footer -->
                         </div><!-- .hero-content-wrap -->
                     </div><!-- .col -->
