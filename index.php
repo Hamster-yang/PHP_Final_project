@@ -117,7 +117,7 @@
 
                             <div class="col-12 col-lg-6 order-1 order-lg-2 content-wrap h-100">
                                 <div class="entry-content">
-                                    <p>Together as teachers, students and universities we can help make this education available for everyone.</p>
+                                    <p>God damn good</p>
                                 </div><!-- .entry-content -->
 
                                 <div class="entry-footer">
