@@ -89,8 +89,8 @@
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
-                        <li><a href=""><?php echo $_SESSION['user_level']?></a></li>     
+                        <li><a href=""><?php echo $_SESSION['user_level']?></a></li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>            
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
