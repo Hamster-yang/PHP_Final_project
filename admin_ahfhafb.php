@@ -1,8 +1,9 @@
 <?php
 session_start();
-$_SESSION['username']="asdf";
+$_SESSION['user_level']="admin";
 if (isset($_POST['username']) && isset($_POST['password']) )
   $_SESSION['username'] = $_POST['username'] ;
+
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +50,6 @@ if (isset($_POST['username']) && isset($_POST['password']) )
                         <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                    <li><a href="">帳號:<?php echo $_SESSION['username'] ?> </a></li>
                                     <li class="current-menu-item"><a href="./admin_ahfhafb.php">主頁　</a></li>
                                     <li><a href="./admin_ahfhafb/page1.php">修改會員資料　</a></li>
                                     <li><a href="./admin_ahfhafb/page2.php">商品管理　</a></li>
@@ -94,8 +94,8 @@ if (isset($_POST['username']) && isset($_POST['password']) )
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href=""><i class="fa fa-home"></i>admin管理系統</a></li>
-                        <li>主頁</li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
+                        <li><a href=""><?php echo $_SESSION['user_level']?></a></li>            
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->

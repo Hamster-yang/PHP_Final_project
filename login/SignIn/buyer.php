@@ -114,7 +114,7 @@
             
             <h3>登入 Sign In</h3>
             <!--<form action="用戶管理.php" id="form1">-->
-            <form action="../../buyer.php" id="form1">
+            <form action="../../buyer.php" id="form1" method="POST">
                 <input type="text" id="username" name="username" placeholder="帳號" required>
                 <div class="tab"></div>
                 <input type="password" id="password" name="password" placeholder="密碼" required>
