@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../../css/login.css" />
+        <link rel="icon" href="./../../images/home.ico" type="image/x-icon" />
         <script>
             function link_signup() {
                 window.location.href="../../Login/signup.php";
@@ -104,7 +105,7 @@
 
     <body>
         <div class="system_name">
-        <h2>.</h2>
+        <h2></h2>
         </div>
         
         <div class="login_page">

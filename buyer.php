@@ -38,7 +38,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="icon" href="./images/home.ico" type="image/x-icon" />
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!-- 不知道是搞啥的 會影響頂端排版
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

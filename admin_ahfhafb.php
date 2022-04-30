@@ -32,6 +32,7 @@ if (isset($_POST['username']) && isset($_POST['password']) )
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style2.css">
+    <link rel="icon" href="./images/home.ico" type="image/x-icon" />
 </head>
 <body class="courses-page">
     <div class="page-header">
