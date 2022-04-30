@@ -1,3 +1,10 @@
+<?php
+session_start();
+$_SESSION['username']="asdf";
+if (isset($_POST['username']) && isset($_POST['password']) )
+  $_SESSION['username'] = $_POST['username'] ;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +49,7 @@
                         <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
+                                    <li><a href="">帳號:<?php echo $_SESSION['username'] ?> </a></li>
                                     <li class="current-menu-item"><a href="./admin_ahfhafb.php">主頁　</a></li>
                                     <li><a href="./admin_ahfhafb/page1.php">修改會員資料　</a></li>
                                     <li><a href="./admin_ahfhafb/page2.php">商品管理　</a></li>

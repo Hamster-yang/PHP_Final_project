@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,38 +18,6 @@
         
         <script>
             $(document).ready(function($) {
-                //for select
-                /*
-                $.validator.addMethod("notEqualsto", function(value, element, arg) {
-                    return arg != value;
-                }, "您尚未選擇!");
-            
-                $("#form1").validate({
-                    submitHandler: function(form) {
-                        //alert("success!");
-                        form.submit();
-                    },
-                    rules: {
-                        username: {
-                            required: true,
-                            notEqualsto: "admin",
-                        },
-                        password: {
-                            required: true,
-                            notEqualsto: "s0954",
-                        }
-                    },
-                    messages: {
-                        username: {
-                            required: "*必填",
-                            notEqualsto:"帳號錯誤"
-                        },
-                        password: {
-                            required: "*必填",
-                            notEqualsto:"密碼錯誤"
-                        }
-                    }
-                });*/
                 $("#form1").submit(function() {
                     var message = "";
                     var username = $('#username').val();
@@ -109,7 +82,7 @@
             
             <h3>admin Login</h3>
             <!--<form action="用戶管理.php" id="form1">-->
-            <form action="../../admin_ahfhafb.php" id="form1">
+            <form action="../../admin_ahfhafb.php" id="form1" method="POST">
                 <input type="text" id="username" name="username" placeholder="帳號" required>
                 <div class="tab"></div>
                 <input type="password" id="password" name="password" placeholder="密碼" required>
