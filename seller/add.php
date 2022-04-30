@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    if (isset($_POST['username']) && isset($_POST['password']) )
+        $_SESSION['username'] = $_POST['username'] ;
+    else if(!isset($_SESSION['username']))
+        $_SESSION['username'] = "";
+    
+    if (isset($_POST['user_level']) )
+        $_SESSION['user_level'] = $_POST['user_level'] ;
+    else if(!isset($_SESSION['user_level']))
+        $_SESSION['user_level'] = "未登入" ;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +36,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
 </head>
 <body class="courses-page">
     <div class="page-header">
@@ -40,9 +53,9 @@
                         <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                    <li ><a href="../seller.php">上架商品清單　</a></li>
-                                    <li class="current-menu-item"><a href="add.php">新增上架商品　</a></li>
-                                    <li><a href="../index.php">登出　</a></li>
+                                    <li ><a href="./../seller.php">上架商品清單　</a></li>
+                                    <li class="current-menu-item"><a href="./add.php">新增上架商品　</a></li>
+                                    <li><a href="./../logout.php">登出　</a></li>
                                 </ul>
 
                                 <div class="hamburger-menu d-lg-none">
@@ -80,8 +93,8 @@
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href=""><i class="fa fa-home"></i>賣家系統</a></li>
-                        <li>新增上架商品</li>
+                        <li><a href="">Level:<?php echo $_SESSION['user_level']?></a></li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->

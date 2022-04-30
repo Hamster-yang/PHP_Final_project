@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +27,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
+    <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
 
 
 </head>
@@ -85,8 +89,8 @@
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href="#"><i class="fa fa-home"></i>admin管理系統</a></li>
-                        <li>商品管理</li>
+                        <li><a href=""><?php echo $_SESSION['user_level']?></a></li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>            
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->

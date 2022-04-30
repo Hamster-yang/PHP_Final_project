@@ -1,13 +1,17 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="../../css/login.css" />
+        <link rel="icon" href="./../../images/home.ico" type="image/x-icon" />
         <script>
             function link_signup() {
                 window.location.href="../../Login/signup.php";
             }
             function link_index() {
-                window.location.href="../index.php";
+                window.location.href="./../../index.php";
             }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -114,7 +118,7 @@
             
             <h3>登入 Sing In</h3>
             <!--<form action="用戶管理.php" id="form1">-->
-            <form action="../../seller.php" id="form1">
+            <form action="../../seller.php" id="form1" method="POST">
                 <input type="text" id="username" name="username" placeholder="帳號" required>
                 <div class="tab"></div>
                 <input type="password" id="password" name="password" placeholder="密碼" required>

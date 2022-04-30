@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    if (isset($_POST['username']) && isset($_POST['password']) )
+        $_SESSION['username'] = $_POST['username'] ;
+    else if(!isset($_SESSION['username']))
+        $_SESSION['username'] = "";
+    
+    if (isset($_POST['user_level']) )
+        $_SESSION['user_level'] = $_POST['user_level'] ;
+    else if(!isset($_SESSION['user_level']))
+        $_SESSION['user_level'] = "未登入" ;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +36,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
 </head>
 <body class="courses-page">
     <div class="page-header">
@@ -44,7 +57,20 @@
                                     <li><a href="../buyer.php">主頁　</a></li>
                                     <li ><a href="./shopcart.php">購物車　</a></li>
                                     <li class="current-menu-item"><a href="./system.php">會員中心　</a></li>
-                                    <li><a href="../login/SignIn/buyer.php">登入/註冊　</a></li>
+                                    <?php
+                                        if ($_SESSION['username']!="")
+                                        {
+                                    ?>
+                                        <li><a href="./../logout.php">登出　</a></li>
+                                    <?php
+                                        }
+                                        else
+                                        {
+                                    ?>
+                                        <li><a href="./login/SignIn/buyer.php">登入/註冊　</a></li>                                    
+                                    <?php
+                                        }
+                                    ?>
                                 </ul>
 
                                 <div class="hamburger-menu d-lg-none">
@@ -92,8 +118,8 @@
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href="#"><i class="fa fa-home"></i>通識屋</a></li>
-                        <li>會員中心</li>
+                        <li><a href="">Level:<?php echo $_SESSION['user_level']?></a></li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->

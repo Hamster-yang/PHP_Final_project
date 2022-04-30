@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../css/login.css" />
+        <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
         <script>
             function link_signin() {
                 window.location.href="./SignIn/buyer.php";
