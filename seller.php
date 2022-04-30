@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    if (isset($_POST['username']) && isset($_POST['password']) )
+        $_SESSION['username'] = $_POST['username'] ;
+    else if(!isset($_SESSION['username']))
+        $_SESSION['username'] = "";
+    
+    if (isset($_POST['user_level']) )
+        $_SESSION['user_level'] = $_POST['user_level'] ;
+    else if(!isset($_SESSION['user_level']))
+        $_SESSION['user_level'] = "未登入" ;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,8 +104,8 @@
             <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href="#"><i class="fa fa-home"></i>賣家系統</a></li>
-                        <li>上架商品清單</li>
+                        <li><a href="">Level:<?php echo $_SESSION['user_level']?></a></li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
