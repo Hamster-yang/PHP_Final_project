@@ -66,7 +66,7 @@
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                                     <li class="current-menu-item"><a href="./seller.php">上架商品清單　</a></li>
                                     <li ><a href="./seller/add.php">新增上架商品　</a></li>
-                                    <li><a href="./index.php">登出　</a></li>
+                                    <li><a href="./logout.php">登出　</a></li>
                                 </ul>
 
                                 <div class="hamburger-menu d-lg-none">
