@@ -49,7 +49,7 @@
                                     <li><a href="../admin_ahfhafb.php">主頁　</a></li>
                                     <li class="current-menu-item"><a href="./page1.php">修改會員資料　</a></li>
                                     <li><a href="./page2.php">商品管理　</a></li>
-                                    <li><a href="../index.php">登出　</a></li>
+                                    <li><a href="./../logout.php">登出　</a></li>
                                 </ul>
 
                                 <div class="hamburger-menu d-lg-none">
