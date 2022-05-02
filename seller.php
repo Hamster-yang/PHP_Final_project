@@ -9,6 +9,12 @@
         $_SESSION['user_level'] = $_POST['user_level'] ;
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
+
+
+    if($_SESSION['user_level']=="buyer")
+    {
+        header("Location:./index.php");
+    }
 ?>
 
 <!DOCTYPE html>
