@@ -83,10 +83,30 @@
             
             <h3>admin Login</h3>
             <!--<form action="用戶管理.php" id="form1">-->
-            <form action="../../admin_ahfhafb.php" id="form1" method="POST">
+            <form action="./check_admin.php" id="form1" method="POST">
                 <input type="text" id="username" name="username" placeholder="帳號" required>
-                <div class="tab"></div>
+                <div class="tab"></div>                
                 <input type="password" id="password" name="password" placeholder="密碼" required>
+                <?php
+                    if(isset($_SESSION['flag']) && $_SESSION['flag']=="error")
+                    {
+                ?>
+                <label class="error">帳號或密碼錯誤</label>
+                <?php
+                    }
+                    else if(isset($_SESSION['flag']) && $_SESSION['flag']=="null")
+                    {
+                ?>
+                <label class="error">查無此帳號</label>
+                <?php
+                    }
+                    else if(isset($_SESSION['flag']) && $_SESSION['flag']=="notseller")
+                    {
+                ?>
+                <label class="error">權限不足</label>
+                <?php
+                    }
+                ?>
                 <div class="tab"></div>
                 <div id="message" class="form-group"></div>
                 <input type="submit" value="登入" class="submit">

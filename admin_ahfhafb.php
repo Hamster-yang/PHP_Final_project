@@ -1,8 +1,8 @@
 <?php
-session_start();
-$_SESSION['user_level']="Admin";
-if (isset($_POST['username']) && isset($_POST['password']) )
-  $_SESSION['username'] = $_POST['username'] ;
+    session_start();
+    $_SESSION['user_level']="Admin";
+    if (isset($_POST['username']) && isset($_POST['password']) )
+    $_SESSION['username'] = $_POST['username'] ;
 
 ?>
 
@@ -54,7 +54,7 @@ if (isset($_POST['username']) && isset($_POST['password']) )
                                     <li class="current-menu-item"><a href="./admin_ahfhafb.php">主頁　</a></li>
                                     <li><a href="./admin_ahfhafb/page1.php">修改會員資料　</a></li>
                                     <li><a href="./admin_ahfhafb/page2.php">商品管理　</a></li>
-                                    <li><a href="./index.php">登出　</a></li>
+                                    <li><a href="./logout.php">登出　</a></li>
                                     
                                 </ul>
 
