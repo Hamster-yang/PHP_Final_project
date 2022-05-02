@@ -1,8 +1,13 @@
 <?php
     session_start();
-    $_SESSION['user_level']="Admin";
+    
     if (isset($_POST['username']) && isset($_POST['password']) )
     $_SESSION['username'] = $_POST['username'] ;
+
+    if($_SESSION['user_level']!="Admin")
+    {
+        header("Location:./index.php");
+    }
 
 ?>
 

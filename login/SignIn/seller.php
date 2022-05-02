@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if($_SESSION['user_level']=="buyer")
+    {
+        header("Location:./index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>

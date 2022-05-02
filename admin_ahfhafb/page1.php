@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if($_SESSION['user_level']!="Admin")
+    {
+        header("Location:./index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
