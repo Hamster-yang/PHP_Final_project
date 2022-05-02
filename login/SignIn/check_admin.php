@@ -26,7 +26,7 @@
                     {
                         $_SESSION['flag'] = "success";
                         $_SESSION['user_level'] = $row["level"];
-                        header("Location:./../../admin_ahfhafb.php");
+                        header("Location:./../../admin.php");
                     }
                     else
                     {

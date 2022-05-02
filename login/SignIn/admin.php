@@ -34,7 +34,7 @@
                         $("#message").html(message);
                         $("#username").focus();
                         return false;
-                    }
+                    }/*
                     if ($("#username").val() != "admin") 
                     {
                         $("#message").html("帳號或密碼錯誤");
@@ -46,7 +46,7 @@
                         $("#message").html("帳號或密碼錯誤");
                         $("#username").focus();
                         return false;
-                    }
+                    }*/
                 });
             });
             </script>
