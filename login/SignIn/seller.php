@@ -1,10 +1,7 @@
 <?php
     session_start();
 
-    if($_SESSION['user_level']=="buyer")
-    {
-        header("Location:./index.php");
-    }
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +13,7 @@
                 window.location.href="../../Login/signup.php";
             }
             function link_index() {
-                window.location.href="./../../index.php";
+                window.location.href="./../../logout.php";
             }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

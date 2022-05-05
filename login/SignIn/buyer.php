@@ -9,10 +9,10 @@
         <link rel="icon" href="./../../images/home.ico" type="image/x-icon" />
         <script>
             function link_signup() {
-                window.location.href="../../Login/signup.php";
+                window.location.href="./../../Login/signup.php";
             }
             function link_index() {
-                window.location.href="../../index.php";
+                window.location.href="./../../logout.php";
             }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

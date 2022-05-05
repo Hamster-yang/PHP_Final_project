@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+    
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +13,7 @@
                 window.location.href="./SignIn/buyer.php";
             }
             function link_index() {
-                window.location.href="../index.php";
+                window.location.href="./../logout.php";
             }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -26,28 +31,6 @@
                     return arg != value;
                 }, "您尚未選擇!");
             
-                $("#form1").validate({
-                    submitHandler: function(form) {
-                        //alert("success!");
-                        form.submit();
-                    },
-                    rules: {
-                        username: {
-                            required: true
-                        },
-                        password: {
-                            required: true,
-                        }
-                    },
-                    messages: {
-                        username: {
-                            required: "*必填"
-                        },
-                        password: {
-                            required: "*必填"
-                        }
-                    }
-                });
 
                 $("#form2").validate({
                     submitHandler: function(form) {
@@ -58,29 +41,29 @@
                         fullname: {
                             required: true
                         },
-                        username2: {
+                        username: {
                             required: true,
                             minlength: 4,
                             maxlength: 10
                         },
-                        password2: {
+                        password: {
                             required: true
                         },
                         comfirm_password: {
                             required: true,
-                            equalTo: "#password2"
+                            equalTo: "#password"
                         },
                     },
                     messages: {
                         fullname: {
                             required: "*必填"
                         },
-                        username2: {
+                        username: {
                             required: "*必填",
                             minlength: "帳號最少要4個字",
                             maxlength: "帳號最長10個字"
                         },
-                        password2: {
+                        password: {
                             required: "*必填"
                         },
                         comfirm_password: {
@@ -126,14 +109,22 @@
             
             <h3>註冊 Sign Up</h3>
 
-            <form action="./SignIn/buyer.php" id="form2">
+            <form action="./check_signup.php" id="form2" method="POST">
                 <input type="text" id="fullname" name="fullname" placeholder="使用者全名" required>
                 <div class="tab"></div>
-                <input type="text" id="username2" name="username" placeholder="帳號" required>
+                <input type="text" id="username" name="username" placeholder="帳號" required>
                 <div class="tab"></div>
-                <input type="password" id="password2" name="password" placeholder="密碼" required>
+                <input type="password" id="password" name="password" placeholder="密碼" required>
                 <div class="tab"></div>
                 <input type="password" id="comfirm_password" name="comfirm_password" placeholder="確認密碼" required>
+                <?php
+                    if(isset($_SESSION['flag']) && $_SESSION['flag']=="error_username_is_found")
+                    {
+                ?>
+                <label class="error">帳號已被註冊</label>
+                <?php
+                    }
+                ?>
                 <div class="tab"></div>            
                 <input type="submit" value="註冊" class="submit">
             </form>  
