@@ -6,6 +6,7 @@
         header("Location:./index.php");
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +34,29 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
+    <style type="text/css">
+        .error {
+                color: #D82424;
+                font-weight: normal;
+                font-family: "微軟正黑體";
+                display: inline;
+                padding: 1px;
+        }
+        table {
+            width: 500px;
+            border: 1px green solid;
+            border-collapse: collapse;
+        }
+
+        tr, td, th {
+            border: 1px blue solid;
+            text-align: center
+        }
+        caption{
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body class="courses-page">
     <div class="page-header">
@@ -102,14 +126,85 @@
                 <div class="contact-form">
                     <h3>會員資料修改</h3>
 
-                    <form>
-                        <input type="text" placeholder="會員帳號">
-                        <input type="password" placeholder="會員密碼">
-                        <input type="password" placeholder="重新輸入新密碼">
-                        <input type="text" placeholder="會員等級">
-                        
-                        <input type="submit" value="Send Message">
+                    <h5>修改會員等級</h5>
+                    <form action="./change_userlevel.php" method="POST">
+                        <input type="text" id="username" name="username" placeholder="會員帳號">
+                        <input type="text" id="userlevel" name="userlevel" placeholder="會員等級">
+                        <div class="tab"></div>             
+                        <input type="submit" value="修改會員等級" class="submit">
+                        <?php
+                            if(isset($_SESSION['msg1']))
+                            {
+                        ?>
+                        <label class="error"><?php echo $_SESSION['msg1'] ?></label>
+                        <?php
+                            }
+                        ?>
                     </form>
+                    <br><br>
+                    <h5>重設會員密碼</h5>
+                    <form action="./change_password.php" method="POST">
+                        <input type="text" id="username" name="username" placeholder="會員帳號">
+                        <input type="text" id="password" name="password" placeholder="重設帳號密碼">
+                        <div class="tab"></div>             
+                        <input type="submit" value="重設會員密碼" class="submit">
+                        <?php
+                            if(isset($_SESSION['msg2']))
+                            {
+                        ?>
+                        <label class="error"><?php echo $_SESSION['msg2'] ?></label>
+                        <?php
+                            }
+                        ?>
+                    </form>
+                    <br><br>
+                    <h5>刪除會員資料</h5>
+                    <form action="./delete_username.php" method="POST">
+                        <input type="text" id="username" name="username" placeholder="會員帳號">
+                        <div class="tab"></div>             
+                        <input type="submit" value="刪除會員資料" class="submit">
+                        <?php
+                            if(isset($_SESSION['msg3']))
+                            {
+                        ?>
+                        <label class="error"><?php echo $_SESSION['msg3'] ?></label>
+                        <?php
+                            }
+                        ?>
+                    </form>
+                    
+                </div><!-- .contact-form -->                
+<?php 
+    $link = mysqli_connect('localhost','root','root123456','user') or die("無法開啟MySQL資料庫連結!<br>");
+    $rows="";
+    $num= "null";
+    mysqli_query($link, 'SET CHARACTER SET utf8');
+    mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+    if ($result = mysqli_query($link, "SELECT * FROM account")) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $rows .= "<tr><td>" . $row["username"] . "</td><td>" . $row["type"] . "</td><td>"  . $row["level"] . "</td></tr>";
+        }
+        $num = mysqli_num_rows($result);
+        mysqli_free_result($result); // 釋放佔用的記憶體
+    }
+    mysqli_close($link); // 關閉資料庫連結
+?>                
+                <div class="contact-form">
+                    <h3>會員資料</h3>
+
+                    <h5>共<?php echo $num; ?>筆</h5>
+                    <table>
+                            <tr>
+                                <th>會員帳號</th>
+                                <th>會員權限</th>
+                                <th>會員等級</th>
+                            <tr>
+                                
+                            <?php echo $rows ?>
+                            
+
+                    </table>
+                    
                 </div><!-- .contact-form -->
             </div><!-- .col -->
 
