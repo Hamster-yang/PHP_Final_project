@@ -15,4 +15,6 @@ if ($result = mysqli_query($link, "SELECT * FROM account")) {
 mysqli_close($link); // 關閉資料庫連結
 echo $num;
 echo $rows;
+
+echo "test";
 ?>
