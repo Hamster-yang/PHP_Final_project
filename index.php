@@ -1,4 +1,29 @@
 <!DOCTYPE html>
+
+<?php
+
+$link = mysqli_connect("localhost", "root", "root123456", "user") // 建立MySQL的資料庫連結
+or die("無法開啟MySQL資料庫連結!<br>");
+
+// 送出編碼的MySQL指令
+mysqli_query($link, 'SET CHARACTER SET utf8');
+mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+
+//資料庫新增存檔
+if (isset($_POST['name'])) {
+    $sql = "insert into message_board values ('" . $_POST['name'] . "','" . $_POST['message'] . "','" ."". "','" ."". "')";
+
+    if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
+    {
+        $msg = "<span style='color:#0000FF'>資料新增成功!</span>";
+    } else {
+        $msg = "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" . mysqli_error($link) . "</span>";
+    }
+
+}
+mysqli_close($link); // 關閉資料庫連結
+?>
+
 <html lang="en">
 <head>
     <title>通識屋</title>
@@ -35,6 +60,7 @@
 
     <link rel="icon" href="./images/home.ico" type="image/x-icon" />
 </head>
+
 <body class="courses-page">
     <div class="page-header">
         <header class="site-header">
@@ -261,9 +287,9 @@
                         <div class="comment-respond">
                             <h3 class="comment-reply-title">新增留言</h3>
 
-                            <form class="comment-form">
-                                <input type="text" placeholder="稱呼">
-                                <textarea rows="4" placeholder="留言"></textarea>
+                            <form class="comment-form" action="" method="POST">
+                                <input type="text" placeholder="稱呼" name="name">
+                                <textarea rows="4" placeholder="留言" name="message"></textarea>
                                 <input type="submit" value="送出">
                             </form><!-- .comment-form -->
                         </div><!-- .comment-respond -->
