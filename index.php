@@ -240,7 +240,7 @@ if (isset($_POST['name'])) {
                     <?php
                             if($result = mysqli_query($link, "SELECT * FROM message_board"))
                             {
-                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
+                                for($i = 1; $row = mysqli_fetch_assoc($result); $i++)
                                 {
                                     echo '<h3 class="comments-title"><span class="comments-number">'.$i. 'Comments</span></h3>
                                     <ol class="comment-list">
