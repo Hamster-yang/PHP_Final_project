@@ -10,6 +10,20 @@
         $_SESSION['user_level'] = $_POST['user_level'] ;
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
+
+    $link = mysqli_connect('localhost','root','root123456','user') or die("無法開啟MySQL資料庫連結!<br>");
+
+    if(isset($_GET['page']))
+        $page = $_GET['page'];
+    else
+        $page = 1;
+
+    if(isset($_POST['filter']))
+        $filter = $_POST['filter'];
+    else if(isset($_GET['filter']))
+        $filter = $_GET['filter'];
+    else
+        $filter = "date";
 ?>
 
 <!DOCTYPE html>
@@ -49,10 +63,15 @@
 
     <script>
         $(function () {
+                $("#btn_show").on("click",function(){
+                    $("#inner").toggle();
+                })
+                $("#btn_show0").on("click",function(){
+                    $("#inner0").toggle();
+                })
                 $("#btn_show1").on("click",function(){
                     $("#inner1").toggle();
                 })
-
                 $("#btn_show2").on("click",function(){
                     $("#inner2").toggle();
                 })
@@ -77,8 +96,12 @@
                 $("#btn_show9").on("click",function(){
                     $("#inner9").toggle();
                 })
-                $("#btn_show10").on("click",function(){
-                    $("#inner10").toggle();
+
+                $("#price").on("click",function(){
+                    $("#filter").prop("value", "price");
+                })
+                $("#date").on("click",function(){
+                    $("#filter").prop("value", "date");
                 })
         });
     </script>
@@ -165,343 +188,83 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-6">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
                         <li><a href="">Level:<?php echo $_SESSION['user_level']?></a></li>
                         <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
-                    </ul>
+                        
+                    </ul>          
+                </div><!-- .breadcrumbs -->
+            </div><!-- .col -->
+            <div class="col-md-6">
+                <div class="breadcrumbs">
+                    <div style = "text-align:right;">
+                        <button type = submit id = "btn_show" class="astext">排序</button>
+                    </div><!-- .course-cost -->
+                    </footer><!-- .entry-footer -->
+                    <footer id="inner" style="display:none">
+                        <div>
+                            <form name = "f1" method = "POST" action = "">
+                                <p style = "text-align:right;">
+                                    <input type = "hidden" id = "filter" name = "filter">
+                                    <button id = "price" type = "submit" class="astext">價錢</button>
+                                    <button id = "date" type = "submit" class="astext">日期</button>
+                                </p>
+                            </form>
+                        </div>
+                    </footer>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
         </div><!-- .row -->
-
-       
 
         <div class="row">
             <div class="col-md-12">
                 <div class="featured-courses courses-wrap">
                     <div class="row mx-m-25">
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext" id="btn_show1" >憶起來學著「懂」攝影吧</button></h2>
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author">邱旭蓮、何俊霖 </div>
-                                                <div class="course-date">111/04/10</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $10000　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                       
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner1"  style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                               
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext" id="btn_show2" >哲學星期五-原住民狩獵文化</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author"> 江人頡 </div>
-                                                <div class="course-date"> 111/04/13</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $免費的啦　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner2"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext"  id="btn_show3">媒體教我的智慧</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author"> 線上通識講座 </div>
-    
-                                                <div class="course-date"> 111/04/11～111/04/15</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $2　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner3"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext"  id="btn_show4">心智圖高效學習法</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author">王聖凱 </div>
-    
-                                                <div class="course-date"> 111/04/28</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $50　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner4"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext"  id="btn_show5">不可不知的租屋大小事</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author">簡珣 </div>
-    
-                                                <div class="course-date">111/05/12</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $500　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner5"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext"  id="btn_show6">程式人生與退休人生</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author"> 陳明熒 </div>
-    
-                                                <div class="course-date">111/04/28</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $60　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner6"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext"  id="btn_show7">體會真實，付諸實踐</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author"> 郭彥甫 </div>
-    
-                                                <div class="course-date"> 111/04/20</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $1000　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner7"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext"  id="btn_show8">跨越古今文學，提升閱讀與寫作力的故事課</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author">  高詩佳 </div>
-    
-                                                <div class="course-date"> 111/04/27</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $90　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner8"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext" id="btn_show9">不可以色色</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author">  邱雅沂 </div>
-    
-                                                <div class="course-date"> 111/05/04</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $500　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner9"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-                        <div class="col-md-12">
-                            <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext" id="btn_show10">神鳥保衛戰</button></h2>
-    
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author">  蔣功國 </div>
-    
-                                                <div class="course-date"> 111/04/11</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $600　<a class="fa fa-cart-plus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner10"   style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
-                            </div><!-- .course-content -->
-                        </div><!-- .col -->
-
+                        <?php
+                            if($result = mysqli_query($link, "SELECT * FROM goods ORDER BY ".$filter." ASC"))
+                            {
+                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
+                                {
+                                    if($i >= $page * 10 - 10 && $i < $page * 10)
+                                    {
+                                        echo '<div class="col-md-12">
+                                            <div class="course-content">
+                                                <div class="course-content-wrap">
+                                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
+                                                    <header class="entry-header">
+                                                            <h2 class="entry-title"><button class="astext" id="btn_show'.($i % 10).'" >'.$row['theme'].'</button></h2>
+                                                            <div class="entry-meta flex flex-wrap align-items-center">
+                                                                <div class="course-author">'.$row['lecturer'].'</div>
+                                                                <div class="course-date">'.$row['date'].'</div>
+                                                            </div><!-- .course-date -->
+                                                        </header><!-- .entry-header -->
+                                                        <div class="course-cost">
+                                                            $'.$row['price'].' <a class="fa fa-cart-plus" href="#"></a>
+                                                        </div><!-- .course-cost -->
+                                                    
+                                                    </footer><!-- .entry-footer -->
+                                                    <footer id="inner'.($i % 10).'"  style="display:none">
+                                                        <div>
+                                                        <h3>詳情</h3> <br>
+                                                        <ul>
+                                                            <li>'.$row['detail_one'].'</li>
+                                                            <li>'.$row['detail_two'].'</li>
+                                                            <li>'.$row['detail_three'].'</li>
+                                                            <li>'.$row['detail_four'].'</li>';
+                                                        if($row['detail_five'] != NULL)
+                                                            echo '<li>'.$row['detail_five'].'</li>';
+                                                        echo '</ul>
+                                                        </div>
+                                                    </footer>
+                                                </div><!-- .course-content-wrap -->
+                                            </div><!-- .course-content -->
+                                        </div><!-- .col -->';
+                                    }
+                                }
+                            }
+                        ?>
                     </div><!-- .row -->
                 </div><!-- .featured-courses -->
                 
@@ -509,8 +272,23 @@
                 <div class="pagination flex flex-wrap justify-content-between align-items-center">
                     <div class="col-12 col-lg-4 order-2 order-lg-1 mt-3 mt-lg-0">
                         <ul class="flex flex-wrap align-items-center order-2 order-lg-1 p-0 m-0">
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                            <?php
+                                for($i = 1; $i <= mysqli_num_rows($result) / 10 + 1; $i++)
+                                {
+                                    if($i == $page)
+                                    {
+                                        echo '<li class="active"><a href="buyer.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
+                                    }
+                                    else
+                                    {
+                                        echo '<li class="fa"><a href="buyer.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
+                                    }
+                                }
+                                if($page < mysqli_num_rows($result) / 10)
+                                {
+                                    echo '<li><a href="buyer.php?page='.($page+1).'&filter='.$filter.'"><i class="fa fa-angle-right"></i></a></li>';
+                                }
+                            ?>
                         </ul>
                     </div>
                 </div><!-- .pagination -->
