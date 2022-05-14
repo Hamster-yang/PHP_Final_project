@@ -181,6 +181,98 @@
                 </div><!-- .row -->
             </div><!-- .container -->
         </div><!-- .testimonial-slider -->
+
+
+
+
+        <div class="container"><!--留言板-->
+        <div class="row">
+            <div class="col-12 offset-lg-1 col-lg-1">
+                
+            </div><!-- .col --><!--不能刪 控制排版 -->
+
+            <div class="col-12 col-lg-8">
+                <div class="post-comments-wrap">
+                    <div class="post-comments">
+                        <h3 class="comments-title"><span class="comments-number">02 Comments</span></h3>
+
+                        <ol class="comment-list">
+                            <li class="comment">
+                                <article class="comment-body">
+                                    <figure class="comment-author-avatar">
+                                        <img src="images/c-1.png" alt="">
+                                    </figure><!-- .comment-author-avatar -->
+
+                                    <div class="comment-wrap">
+                                        <div class="comment-author">
+                                            <span class="comment-meta d-block">
+                                                <a href="#">27 Aug 2018</a>
+                                            </span><!-- .comment-meta -->
+
+                                            <span class="fn">
+                                                <a href="#">Chris Hadfield</a>
+                                            </span><!-- .fn -->
+                                        </div><!-- .comment-author -->
+
+                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi</p>
+
+                                        <div class="reply">
+                                            <a href="#">like</a>
+                                            <a href="#">reply</a>
+                                        </div><!-- .reply -->
+                                    </div><!-- .comment-wrap -->
+
+                                    <div class="clearfix"></div>
+                                </article><!-- .comment-body -->
+                            </li><!-- .comment -->
+
+                            <li class="comment">
+                                <article class="comment-body">
+                                    <figure class="comment-author-avatar">
+                                        <img src="images/c-3.png" alt="">
+                                    </figure><!-- .comment-author-avatar -->
+
+                                    <div class="comment-wrap">
+                                        <div class="comment-author">
+                                            <span class="comment-meta d-block">
+                                                <a href="#">27 Aug 2018</a>
+                                            </span><!-- .comment-meta -->
+
+                                            <span class="fn">
+                                                <a href="#">Henry Ford</a>
+                                            </span><!-- .comment-autho -->
+                                        </div><!-- .comment-author -->
+
+                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi </p>
+
+                                        <div class="reply">
+                                            <a href="#">like</a>
+                                            <a href="#">reply</a>
+                                        </div><!-- .reply -->
+                                    </div><!-- .comment-wrap -->
+
+                                    <div class="clearfix"></div>
+                                </article><!-- .comment-body -->
+                            </li><!-- .comment -->
+                        </ol><!-- .comment-list -->
+                    </div><!-- .post-comments -->
+
+                    <div class="comments-form">
+                        <div class="comment-respond">
+                            <h3 class="comment-reply-title">新增留言</h3>
+
+                            <form class="comment-form">
+                                <input type="text" placeholder="稱呼">
+                                <textarea rows="4" placeholder="留言"></textarea>
+                                <input type="submit" value="送出">
+                            </form><!-- .comment-form -->
+                        </div><!-- .comment-respond -->
+                    </div><!-- .comments-form -->
+                </div><!-- .post-comments-wrap -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container --><!--留言板-->
+       
     </section><!-- .testimonial-section -->
 
    
