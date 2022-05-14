@@ -11,7 +11,23 @@ mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 
 //資料庫新增存檔
 if (isset($_POST['name'])) {
-    $sql = "insert into message_board values ('" . $_POST['name'] . "','" . $_POST['message'] . "','" ."". "','" ."". "')";
+    //$tmp_name = $_FILES['picture']['tmp_name'];
+    //$file_name = $_FILES['picture']['name'];
+    //$file_type = $_FILES['picture']['type'];
+    //$fp = fopen($tmp_name, "rb");
+    //$file = addslashes(fread($fp, filesize($tmp_name)));
+    $name = $_POST['name'];
+    $message = $_POST['message'];
+    $today = getdate($stamps);
+    $year = $today['year'];
+
+    $today = getdate($stamps);
+    $month = $today["mon"];
+
+    $today = getdate($stamps);
+    $day = $today['mday'];
+
+    $sql = "insert into message_board values ('$name','$message','','','$year"."-".$month."-"."$day')";
 
     if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
     {
@@ -21,7 +37,7 @@ if (isset($_POST['name'])) {
     }
 
 }
-mysqli_close($link); // 關閉資料庫連結
+//mysqli_close($link); // 關閉資料庫連結
 ?>
 
 <html lang="en">
@@ -220,67 +236,44 @@ mysqli_close($link); // 關閉資料庫連結
             <div class="col-12 col-lg-8">
                 <div class="post-comments-wrap">
                     <div class="post-comments">
-                        <h3 class="comments-title"><span class="comments-number">02 Comments</span></h3>
 
-                        <ol class="comment-list">
-                            <li class="comment">
-                                <article class="comment-body">
-                                    <figure class="comment-author-avatar">
-                                        <img src="images/c-1.png" alt="">
-                                    </figure><!-- .comment-author-avatar -->
+                    <?php
+                            if($result = mysqli_query($link, "SELECT * FROM message_board"))
+                            {
+                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
+                                {
+                                    echo '<h3 class="comments-title"><span class="comments-number">'.$i. 'Comments</span></h3>
+                                    <ol class="comment-list">
+                                        <li class="comment">
+                                            <article class="comment-body">
+                                                <figure class="comment-author-avatar">
+                                                    <img src="images/c-1.png" alt="">
+                                                </figure><!-- .comment-author-avatar -->
+    
+                                                <div class="comment-wrap">
+                                                    <div class="comment-author">
+                                                        <span class="comment-meta d-block">
+                                                            <a href="#">'.$row['date'].'</a>
+                                                        </span><!-- .comment-meta -->
+    
+                                                        <span class="fn">
+                                                            <a href="#">'.$row['name'].'</a>
+                                                        </span><!-- .fn -->
+                                                    </div><!-- .comment-author -->
+    
+                                                    <p>'.$row['message'].'</p>';
+    
+                                        echo '</div><!-- .comment-wrap -->
+    
+                                                <div class="clearfix"></div>
+                                            </article><!-- .comment-body -->
+                                        </li><!-- .comment -->
+                                    </ol><!-- .comment-list -->';
+                                }
+                            }
+                        ?>
 
-                                    <div class="comment-wrap">
-                                        <div class="comment-author">
-                                            <span class="comment-meta d-block">
-                                                <a href="#">27 Aug 2018</a>
-                                            </span><!-- .comment-meta -->
 
-                                            <span class="fn">
-                                                <a href="#">Chris Hadfield</a>
-                                            </span><!-- .fn -->
-                                        </div><!-- .comment-author -->
-
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi</p>
-
-                                        <div class="reply">
-                                            <a href="#">like</a>
-                                            <a href="#">reply</a>
-                                        </div><!-- .reply -->
-                                    </div><!-- .comment-wrap -->
-
-                                    <div class="clearfix"></div>
-                                </article><!-- .comment-body -->
-                            </li><!-- .comment -->
-
-                            <li class="comment">
-                                <article class="comment-body">
-                                    <figure class="comment-author-avatar">
-                                        <img src="images/c-3.png" alt="">
-                                    </figure><!-- .comment-author-avatar -->
-
-                                    <div class="comment-wrap">
-                                        <div class="comment-author">
-                                            <span class="comment-meta d-block">
-                                                <a href="#">27 Aug 2018</a>
-                                            </span><!-- .comment-meta -->
-
-                                            <span class="fn">
-                                                <a href="#">Henry Ford</a>
-                                            </span><!-- .comment-autho -->
-                                        </div><!-- .comment-author -->
-
-                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi </p>
-
-                                        <div class="reply">
-                                            <a href="#">like</a>
-                                            <a href="#">reply</a>
-                                        </div><!-- .reply -->
-                                    </div><!-- .comment-wrap -->
-
-                                    <div class="clearfix"></div>
-                                </article><!-- .comment-body -->
-                            </li><!-- .comment -->
-                        </ol><!-- .comment-list -->
                     </div><!-- .post-comments -->
 
                     <div class="comments-form">
@@ -290,6 +283,7 @@ mysqli_close($link); // 關閉資料庫連結
                             <form class="comment-form" action="" method="POST">
                                 <input type="text" placeholder="稱呼" name="name">
                                 <textarea rows="4" placeholder="留言" name="message"></textarea>
+                                <input type="file" name="picture"></input>
                                 <input type="submit" value="送出">
                             </form><!-- .comment-form -->
                         </div><!-- .comment-respond -->
