@@ -11,7 +11,7 @@
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
 
-    $link = mysqli_connect('localhost','root','root123456','user') or die("無法開啟MySQL資料庫連結!<br>");
+    $link = mysqli_connect('localhost','root','root123456','group_27') or die("無法開啟MySQL資料庫連結!<br>");
 
     if(isset($_GET['page']))
         $page = $_GET['page'];
@@ -25,7 +25,13 @@
     else
         $filter = "date";
 ?>
-
+<?php
+    if (isset($_SESSION['cart'])) {
+        $cnt = count($_SESSION['cart']);
+    } else {
+        $cnt = 0;
+    }   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +129,7 @@
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                                     <li class="current-menu-item"><a href="./buyer.php">主頁　</a></li>
-                                    <li ><a href="./buyer/shopcart.php">購物車　</a></li>
+                                    <li ><a href="./buyer/shopcart.php">購物車 <?php echo $cnt; ?>　</a></li>
                                     <li ><a href="./buyer/system.php">會員中心　</a></li>
 
                                     <?php
@@ -166,18 +172,7 @@
                     <div class=" col-lg-12">
                         <header class="entry-header">
                             <h1>現正熱賣</h1>
-                                <!--
-                                    <nav class="site-navigation flex justify-content-end align-items-end"></nav>
-                                        <dl class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                            <dd><a href="#">分類　</a></dd>
-                                            <dd><a href="#">分類　</a></dd>
-                                            <dd><a href="#">分類　</a></dd>
-                                            <dd><a href="#">分類　</a></dd>
-                                            <dd><a href="#">分類　</a></dd>
-                                            <dd><a href="#">分類　</a></dd>
-                                        </dl>
-                                    </nav> 
-                                -->
+                               
                             </div>
                         </header><!-- .entry-header -->
                     </div><!-- .col -->
