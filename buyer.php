@@ -254,7 +254,7 @@
                                                             </div><!-- .course-date -->
                                                         </header><!-- .entry-header -->
                                                         <div class="course-cost">
-                                                            $'.$row['price'].' <a class="fa fa-cart-plus" href="#"></a>
+                                                            $'.$row['price'].' <a class="fa fa-cart-plus" href="'.$row['no'].'"></a>
                                                         </div><!-- .course-cost -->
                                                     
                                                     </footer><!-- .entry-footer -->
