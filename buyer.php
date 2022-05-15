@@ -19,11 +19,20 @@
         $page = 1;
 
     if(isset($_POST['filter']))
-        $filter = $_POST['filter'];
+    {
+        if($_POST['filter'] == "price_ASC")
+            $filter = "price ASC";
+        else if($_POST['filter'] == "date_ASC")
+            $filter = "date ASC";
+        else if($_POST['filter'] == "price_DESC")
+            $filter = "price DESC";
+        else
+            $filter = "date DESC";
+    }
     else if(isset($_GET['filter']))
         $filter = $_GET['filter'];
     else
-        $filter = "date";
+        $filter = "date ASC";
 ?>
 <?php
     if (isset($_SESSION['cart'])) {
@@ -103,11 +112,17 @@
                     $("#inner9").toggle();
                 })
 
-                $("#price").on("click",function(){
-                    $("#filter").prop("value", "price");
+                $("#price_ASC").on("click",function(){
+                    $("#filter").prop("value", "price_ASC");
                 })
-                $("#date").on("click",function(){
-                    $("#filter").prop("value", "date");
+                $("#date_ASC").on("click",function(){
+                    $("#filter").prop("value", "date_ASC");
+                })
+                $("#price_DESC").on("click",function(){
+                    $("#filter").prop("value", "price_DESC");
+                })
+                $("#date_DESC").on("click",function(){
+                    $("#filter").prop("value", "date_DESC");
                 })
         });
     </script>
@@ -203,8 +218,11 @@
                             <form name = "f1" method = "POST" action = "">
                                 <p style = "text-align:right;">
                                     <input type = "hidden" id = "filter" name = "filter">
-                                    <button id = "price" type = "submit" class="astext">價錢</button>
-                                    <button id = "date" type = "submit" class="astext">日期</button>
+                                    <button id = "price_ASC" type = "submit" class="astext">價錢由低到高　</button>
+                                    <button id = "date_ASC" type = "submit" class="astext">日期由舊到新</button>
+                                    <br>
+                                    <button id = "price_DESC" type = "submit" class="astext">價錢由高到低　</button>
+                                    <button id = "date_DESC" type = "submit" class="astext">日期由新到舊</button>
                                 </p>
                             </form>
                         </div>
@@ -218,7 +236,7 @@
                 <div class="featured-courses courses-wrap">
                     <div class="row mx-m-25">
                         <?php
-                            if($result = mysqli_query($link, "SELECT * FROM goods ORDER BY ".$filter." ASC"))
+                            if($result = mysqli_query($link, "SELECT * FROM goods ORDER BY ".$filter))
                             {
                                 for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
                                 {
