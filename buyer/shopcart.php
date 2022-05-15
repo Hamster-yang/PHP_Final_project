@@ -9,7 +9,25 @@
         $_SESSION['user_level'] = $_POST['user_level'] ;
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
+
+    $id = $_SESSION['user_id'];
 ?>
+
+<?php
+
+    $link = mysqli_connect("localhost", "root", "root123456", "group_27") // 建立MySQL的資料庫連結
+    or die("無法開啟MySQL資料庫連結!<br>");
+
+    // 送出編碼的MySQL指令
+    mysqli_query($link, 'SET CHARACTER SET utf8');
+    mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+
+    $no = $_session['user_id'];
+
+    //mysqli_close($link); // 關閉資料庫連結
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,19 +153,7 @@
                 <div class="row">
                     <div class=" col-lg-12">
                         <header class="entry-header">
-                            <h1>現正熱賣</h1>
-                                <!--
-                                <nav class="site-navigation flex justify-content-end align-items-end"></nav>
-                                <dl class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                    <dd><a href="#">分類　</a></dd>
-                                    <dd><a href="#">分類　</a></dd>
-                                    <dd><a href="#">分類　</a></dd>
-                                    <dd><a href="#">分類　</a></dd>
-                                    <dd><a href="#">分類　</a></dd>
-                                    <dd><a href="#">分類　</a></dd>
-                                </dl>
-                                </nav>
-                            -->
+                            <h1>購物車</h1>
                             </div>
                         </header><!-- .entry-header -->
                     </div><!-- .col -->
@@ -176,33 +182,48 @@
                     <div class="row mx-m-25">
                         <div class="col-md-12">
                             <div class="course-content">
-                                <div class="course-content-wrap">
-                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                        <header class="entry-header">
-                                            <h2 class="entry-title"><button class="astext" id="btn_show1" >憶起來學著「懂」攝影吧</button></h2>
-                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author">邱旭蓮、何俊霖 </div>
-                                                <div class="course-date">111/04/10</div>
-                                            </div><!-- .course-date -->
-                                        </header><!-- .entry-header -->
-                                        <div class="course-cost">
-                                            $10000　<a class="fa fa-minus" href="#"></a>
-                                        </div><!-- .course-cost -->
-                                       
-                                    </footer><!-- .entry-footer -->
-                                    <footer id="inner1"  style="display:none">
-                                        <div>
-                                        <h3>詳情</h3> <br>
-                                        <ul>
-                                            <li>時間：下午4:10-6:00 </li>
-                                            <li>本活動不提供現場報名。謝謝</li>
-                                            <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                            <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                            <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                                        </ul>
-                                        </div>
-                                    </footer>
-                                </div><!-- .course-content-wrap -->
+
+
+                            <?php
+                            if($result = mysqli_query($link, "SELECT * FROM shopcart s, goods g, account a WHERE s.good_no = g.no and s.buyer = $no and s.buyer = a.user_id"))
+                            {
+                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
+                                {
+                                    echo '<div class="col-md-12">
+                                    <div class="course-content">
+                                        <div class="course-content-wrap">
+                                            <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
+                                            <header class="entry-header">
+                                                    <h2 class="entry-title"><button class="astext" id="btn_show'.($i % 10).'" >'.$row['theme'].'</button></h2>
+                                                    <div class="entry-meta flex flex-wrap align-items-center">
+                                                        <div class="course-author">'.$row['lecturer'].'</div>
+                                                        <div class="course-date">'.$row['date'].'</div>
+                                                    </div><!-- .course-date -->
+                                                </header><!-- .entry-header -->
+                                                <div class="course-cost">
+                                                    $'.$row['price'].' <a class="fa fa-cart-minus" href="buyer.php?id="></a>
+                                                </div><!-- .course-cost -->
+                                            
+                                            </footer><!-- .entry-footer -->
+                                            <footer id="inner'.($i % 10).'"  style="display:none">
+                                                <div>
+                                                <h3>詳情</h3> <br>
+                                                <ul>
+                                                    <li>'.$row['detail_one'].'</li>
+                                                    <li>'.$row['detail_two'].'</li>
+                                                    <li>'.$row['detail_three'].'</li>
+                                                    <li>'.$row['detail_four'].'</li>';
+                                                if($row['detail_five'] != NULL)
+                                                    echo '<li>'.$row['detail_five'].'</li>';
+                                                echo '</ul>
+                                                </div>
+                                            </footer>
+                                        </div><!-- .course-content-wrap -->
+                                    </div><!-- .course-content -->
+                                </div><!-- .col -->';
+                                }
+                            }
+                            ?>
                                
                             </div><!-- .course-content -->
                         </div><!-- .col -->
