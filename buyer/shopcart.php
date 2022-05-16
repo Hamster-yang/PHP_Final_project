@@ -185,7 +185,7 @@
 
 
                             <?php
-                            if($result = mysqli_query($link, "SELECT * FROM shopcart s, goods g, account a WHERE s.good_no = g.no and s.buyer = $no and s.buyer = a.user_id"))
+                            if($result = mysqli_query($link, "SELECT * FROM shopcart s, goods g WHERE s.good_no = g.no and s.buyer = $no"))
                             {
                                 for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
                                 {
@@ -201,7 +201,7 @@
                                                     </div><!-- .course-date -->
                                                 </header><!-- .entry-header -->
                                                 <div class="course-cost">
-                                                    $'.$row['price'].' <a class="fa fa-cart-minus" href="buyer.php?id="></a>
+                                                    $'.$row['price'].' <a class="fa fa-cart-minus" href="#"></a>
                                                 </div><!-- .course-cost -->
                                             
                                             </footer><!-- .entry-footer -->
