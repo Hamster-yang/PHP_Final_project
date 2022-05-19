@@ -9,6 +9,39 @@
         $_SESSION['user_level'] = $_POST['user_level'] ;
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
+
+    $link = mysqli_connect('localhost','root','root123456','group_27') or die("無法開啟MySQL資料庫連結!<br>");
+
+    mysqli_query($link, 'SET CHARACTER SET utf8');
+    mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+
+    if (isset($_POST['theme'])) {
+        $result = mysqli_query($link, "SELECT * FROM goods");
+        if($_POST['detail'] != "")
+        {
+            $str = split('[.]', $_POST['detail']);
+            $sqls = array(
+                "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "', NULL, NULL, NULL, NULL)",
+                "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "', NULL, NULL, NULL)",
+                "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "', NULL, NULL)",
+                "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "', NULL)",
+                "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "','" . $str[4] . "')"
+            );
+            $sql = $sqls[(count($str) - 1)];
+        }
+        else
+        {
+            $sql = "insert into goods values ('" . (mysqli_num_rows($result) + 1) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "', NULL, NULL, NULL, NULL, NULL)";
+        }
+        
+        if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
+        {
+            $msg = "<span style='color:#0000FF'>資料新增成功!</span>";
+        } else {
+            $msg = "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" . mysqli_error($link) . "</span>";
+        }
+    
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,33 +133,35 @@
             </div><!-- .col -->
         </div><!-- .row -->
         
-        <div class="contact-form">
-            <div class="row mx-m-25">
-                <div class="col-md-12" style="font-weight: bold;">
-                    通識名稱
-                    <input type="text" placeholder="Ex.阿美族部落參訪(限原住民學生參加)" style="margin-top: 0px;">
+        <form name = "f1" method = "POST" action = "">
+            <div class="contact-form">
+                <div class="row mx-m-25">
+                    <div class="col-md-12" style="font-weight: bold;">
+                        通識名稱
+                        <input name = "theme" type="text" placeholder="Ex.阿美族部落參訪(限原住民學生參加)" style="margin-top: 0px;">
+                    </div>
+                    <div class="col-md-12" style="margin-top: 20px;font-weight: bold;">
+                        講師
+                        <input name = "lecturer" type="text" placeholder="Ex.都蘭部落講師/基拉歌賽部落講師" style="margin-top: 0px;">
+                    </div>
+                    <div class="col-md-6" style="margin-top: 20px;font-weight: bold;">
+                        上架時間
+                        <input name = "date" type="text" placeholder="月 日, 年" style="margin-top: 0px;">
+                    </div>
+                    <div class="col-md-6" style="margin-top: 20px;font-weight: bold;">
+                        費用
+                        <input name = "price" type="text" placeholder="$100" style="margin-top: 0px;">
+                    </div>
+                    <div class="col-md-12" style="margin-top: 20px;font-weight: bold;">
+                        詳情
+                        <textarea name = "detail" rows="4" placeholder="..." style="margin-top: 0px;"></textarea>
+                    </div>
                 </div>
-                <div class="col-md-12" style="margin-top: 20px;font-weight: bold;">
-                    講師
-                    <input type="text" placeholder="Ex.都蘭部落講師/基拉歌賽部落講師" style="margin-top: 0px;">
-                </div>
-                <div class="col-md-6" style="margin-top: 20px;font-weight: bold;">
-                    上架時間
-                    <input type="text" placeholder="月 日, 年" style="margin-top: 0px;">
-                </div>
-                <div class="col-md-6" style="margin-top: 20px;font-weight: bold;">
-                    費用
-                    <input type="text" placeholder="$100" style="margin-top: 0px;">
-                </div>
-                <div class="col-md-12" style="margin-top: 20px;font-weight: bold;">
-                    詳情
-                    <textarea rows="4" placeholder="..." style="margin-top: 0px;"></textarea>
-                </div>
-            </div>
-            <button type="button" class="btn btn-success" style="margin-top: 30px;">
-                <i class="fa fa-plus"></i> 新增
-            </button>
-        </div><!-- .contact-form -->
+                <button type="submit" class="btn btn-success" style="margin-top: 30px;">
+                    <i class="fa fa-plus"></i> 新增
+                </button>
+            </div><!-- .contact-form -->
+        </form>
     </div><!-- .container -->
 
     <div class="clients-logo">
