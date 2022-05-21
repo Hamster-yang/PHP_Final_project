@@ -24,6 +24,7 @@
                 {
                     $_SESSION['flag'] = "success";
                     $_SESSION['user_level'] = $row["level"];
+                    $_SESSION['user_id'] = $row["user_id"];
                     header("Location:./../../buyer.php");
                 }
                 else
