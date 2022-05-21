@@ -33,14 +33,12 @@
         $filter = $_GET['filter'];
     else
         $filter = "date ASC";
+    if(isset($_GET['good_no']))
+        $good_no = $_GET['good_no'];
+    else
+        $good_no = -1;
 ?>
-<?php
-    if (isset($_SESSION['cart'])) {
-        $cnt = count($_SESSION['cart']);
-    } else {
-        $cnt = 0;
-    }   
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,7 +142,7 @@
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                                     <li class="current-menu-item"><a href="./buyer.php">主頁　</a></li>
-                                    <li ><a href="./buyer/shopcart.php">購物車 <?php echo $cnt; ?>　</a></li>
+                                    <li ><a href="./buyer/shopcart.php">購物車　</a></li>
                                     <li ><a href="./buyer/system.php">會員中心　</a></li>
 
                                     <?php
@@ -254,7 +252,7 @@
                                                             </div><!-- .course-date -->
                                                         </header><!-- .entry-header -->
                                                         <div class="course-cost">
-                                                            $'.$row['price'].' <a class="fa fa-cart-plus" href="buyer.php?'.$row['no'].'"></a>
+                                                            $'.$row['price']." <a class='fa fa-cart-plus' href='addgoods.php?good_no='".$row['no'].'"></a>
                                                         </div><!-- .course-cost -->
                                                     
                                                     </footer><!-- .entry-footer -->
