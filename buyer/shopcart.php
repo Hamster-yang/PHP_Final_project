@@ -10,7 +10,7 @@
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
 
-    $id = $_SESSION['user_id'];
+    $no=$_SESSION['user_id'];    
 ?>
 
 <?php
@@ -21,8 +21,6 @@
     // 送出編碼的MySQL指令
     mysqli_query($link, 'SET CHARACTER SET utf8');
     mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
-
-    $no = $_session['user_id'];
 
     //mysqli_close($link); // 關閉資料庫連結
 ?>
@@ -185,7 +183,7 @@
 
 
                             <?php
-                            if($result = mysqli_query($link, "SELECT * FROM shopcart s, goods g WHERE s.good_no = g.no and s.buyer = $no"))
+                            if($result = mysqli_query($link, "SELECT * FROM shopcart s, goods g, account a WHERE s.good_no = g.no and s.buyer = $no and s.buyer = a.user_id"))
                             {
                                 for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
                                 {
