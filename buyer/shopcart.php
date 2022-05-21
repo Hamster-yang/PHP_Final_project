@@ -11,7 +11,7 @@
         $_SESSION['user_level'] = "未登入" ;
 
     if(isset($_SESSION['user_id']))
-    $no=$_SESSION['user_id'];    
+    $no= $_SESSION['user_id'];    
     else
     $no = -1;
 ?>
