@@ -62,6 +62,10 @@
 
     <script>
         $(function () {
+                $("#btn_show0").on("click",function(){
+                    $("#inner0").toggle();
+                })
+
                 $("#btn_show1").on("click",function(){
                     $("#inner1").toggle();
                 })
@@ -202,7 +206,7 @@
                                                     </div><!-- .course-date -->
                                                 </header><!-- .entry-header -->
                                                 <div class="course-cost">
-                                                    $'.$row['price'].' <a class="fa fa-cart-minus" href="#"></a>
+                                                    $'.$row['price'].' <a class="fa fa-minus" href="deletegoods.php?dgood='.$row['no'].'"></a>
                                                 </div><!-- .course-cost -->
                                             
                                             </footer><!-- .entry-footer -->

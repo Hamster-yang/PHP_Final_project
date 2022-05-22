@@ -123,6 +123,10 @@
                     $("#filter").prop("value", "date_DESC");
                 })
 
+                <?php
+                if($_SESSION['username']=="")             
+                    echo '$("#addcart").hide()';
+                ?>
         });
     </script>
 </head>
@@ -253,7 +257,7 @@
                                                             </div><!-- .course-date -->
                                                         </header><!-- .entry-header -->
                                                         <div class="course-cost">
-                                                            $'.$row['price'].' <a class="fa fa-cart-plus" href="./buyer/addgoods.php?good_no='.$row['no'].'"></a>
+                                                            $'.$row['price'].' <a id="addcart" class="fa fa-cart-plus" href="./buyer/addgoods.php?good_no='.$row['no'].'"></a>
                                                         </div><!-- .course-cost -->
                                                     
                                                     </footer><!-- .entry-footer -->
