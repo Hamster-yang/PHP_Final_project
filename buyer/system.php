@@ -9,6 +9,12 @@
         $_SESSION['user_level'] = $_POST['user_level'] ;
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
+
+
+    if($_SESSION['username']=="")
+    {
+        echo "<script> {window.alert('請先登入');history.go(-1)} </script>";//返回上頁
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

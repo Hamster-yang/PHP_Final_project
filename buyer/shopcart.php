@@ -14,6 +14,12 @@
     $no= $_SESSION['user_id'];    
     else
     $no = -1;
+
+    if($_SESSION['username']=="")
+    {
+        echo "<script> {window.alert('請先登入');history.go(-1)} </script>";//返回上頁
+    }
+
 ?>
 
 <?php
