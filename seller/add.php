@@ -26,25 +26,25 @@
         {
             $cnt = 0;
         }
-        switch(count($str))
+        switch($cnt)
         {
             case 0:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "', NULL, NULL, NULL, NULL, NULL)";
+                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "', NULL, NULL, NULL, NULL, NULL)";
                 break;
             case 1:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "', NULL, NULL, NULL, NULL)";
+                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "', NULL, NULL, NULL, NULL)";
                 break;
             case 2:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "', NULL, NULL, NULL)";
+                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "', NULL, NULL, NULL)";
                 break;
             case 3:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "', NULL, NULL)";
+                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "', NULL, NULL)";
                 break;
             case 4:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "', NULL)";
+                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "', NULL)";
                 break;
             case 5:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "','" . $str[4] . "')";
+                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "','" . $str[4] . "')";
                 break;
         }
         
