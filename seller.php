@@ -39,9 +39,7 @@
     else
         $filter = "date ASC";
     if(isset($_GET['good_no']))
-        $good_no = $_GET['good_no'];
-    else
-        $good_no = -1;
+        $result = mysqli_query($link, "DELETE FROM goods WHERE `no` = ".$_GET['good_no']);
 ?>
 
 <!DOCTYPE html>
@@ -232,7 +230,7 @@
                                                             </div><!-- .course-date -->
                                                         </header><!-- .entry-header -->
                                                         <div class="course-cost">
-                                                            $'.$row['price'].' <a class="fa fa-cart-plus" href="./buyer/addgoods.php?good_no='.$row['no'].'"></a>
+                                                            $'.$row['price'].' <a class="fa fa-minus" href="./seller.php?good_no='.$row['no'].'"></a>
                                                         </div><!-- .course-cost -->
                                                     
                                                     </footer><!-- .entry-footer -->
@@ -267,16 +265,16 @@
                                 {
                                     if($i == $page)
                                     {
-                                        echo '<li class="active"><a href="buyer.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
+                                        echo '<li class="active"><a href="seller.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
                                     }
                                     else
                                     {
-                                        echo '<li class="fa"><a href="buyer.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
+                                        echo '<li class="fa"><a href="seller.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
                                     }
                                 }
                                 if($page < mysqli_num_rows($result) / 10)
                                 {
-                                    echo '<li><a href="buyer.php?page='.($page+1).'&filter='.$filter.'"><i class="fa fa-angle-right"></i></a></li>';
+                                    echo '<li><a href="seller.php?page='.($page+1).'&filter='.$filter.'"><i class="fa fa-angle-right"></i></a></li>';
                                 }
                             ?>
                         </ul>
