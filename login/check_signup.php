@@ -22,7 +22,9 @@
             {
                 $_SESSION['flag'] = "error_username_is_found";
             }
+            $num_cnt = $row['user_id'];
         }
+        $num_cnt = $num_cnt +1;
         $num = mysqli_num_rows($result) + 1;
         
         mysqli_free_result($result); // 釋放佔用的記憶體
@@ -37,7 +39,7 @@
     {
         //資料庫新增存檔
         if (isset($_POST['username'])) {
-            $sql = "insert into account values ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . "buyer" . "','" . "銅會員" . "','". $num ."')";
+            $sql = "insert into account values ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . "buyer" . "','" . "銅會員" . "','". $num_cnt ."')";
 
             if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
             {
