@@ -37,7 +37,7 @@
     {
         //資料庫新增存檔
         if (isset($_POST['username'])) {
-            $sql = "insert into accont values ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . "buyer" . "','" . "銅會員" . "','". $num ."')";
+            $sql = "insert into account values ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . "buyer" . "','" . "銅會員" . "','". $num ."')";
 
             if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
             {
