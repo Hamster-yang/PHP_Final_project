@@ -15,6 +15,10 @@
     mysqli_query($link, 'SET CHARACTER SET utf8');
     mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 
+    $result = mysqli_query($link, "SELECT * FROM goods ORDER BY `no` DESC LIMIT 0, 1");
+    $row = mysqli_fetch_assoc($result);
+    $no = $row['no'] + 1;
+
     if (isset($_POST['theme'])) {
         $result = mysqli_query($link, "SELECT * FROM goods");
         if($_POST['detail'] != "")
@@ -29,22 +33,22 @@
         switch($cnt)
         {
             case 0:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "', NULL, NULL, NULL, NULL, NULL)";
+                $sql = "insert into goods values ('" . $no . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "', NULL, NULL, NULL, NULL, NULL)";
                 break;
             case 1:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "', NULL, NULL, NULL, NULL)";
+                $sql = "insert into goods values ('" . $no . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "', NULL, NULL, NULL, NULL)";
                 break;
             case 2:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "', NULL, NULL, NULL)";
+                $sql = "insert into goods values ('" . $no . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "', NULL, NULL, NULL)";
                 break;
             case 3:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "', NULL, NULL)";
+                $sql = "insert into goods values ('" . $no . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "', NULL, NULL)";
                 break;
             case 4:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "', NULL)";
+                $sql = "insert into goods values ('" . $no . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "', NULL)";
                 break;
             case 5:
-                $sql = "insert into goods values ('" . (mysqli_num_rows($result)) . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "','" . $str[4] . "')";
+                $sql = "insert into goods values ('" . $no . "','" . $_SESSION['username'] . "','" . $_POST['theme'] . "','" . $_POST['lecturer'] . "','" . $_POST['date'] . "','" . $_POST['price'] . "','" . $str[0] . "','" . $str[1] . "','" . $str[2] . "','" . $str[3] . "','" . $str[4] . "')";
                 break;
         }
         
@@ -160,11 +164,11 @@
                     </div>
                     <div class="col-md-6" style="margin-top: 20px;font-weight: bold;">
                         上架時間
-                        <input name = "date" type="text" placeholder="月 日, 年" style="margin-top: 0px;">
+                        <input name = "date" type="text" placeholder="西元年-月-日" style="margin-top: 0px;">
                     </div>
                     <div class="col-md-6" style="margin-top: 20px;font-weight: bold;">
                         費用
-                        <input name = "price" type="text" placeholder="$100" style="margin-top: 0px;">
+                        <input name = "price" type="text" placeholder="100" style="margin-top: 0px;">
                     </div>
                     <div class="col-md-12" style="margin-top: 20px;font-weight: bold;">
                         詳情
