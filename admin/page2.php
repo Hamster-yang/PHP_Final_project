@@ -5,6 +5,36 @@
         header("Location:./index.php");
     }
 ?>
+
+<?php
+    $link = mysqli_connect('localhost','root','root123456','group_27') or die("無法開啟MySQL資料庫連結!<br>");
+
+    if(isset($_GET['page']))
+        $page = $_GET['page'];
+    else
+        $page = 1;
+
+    if(isset($_POST['filter']))
+    {
+        if($_POST['filter'] == "price_ASC")
+            $filter = "price ASC";
+        else if($_POST['filter'] == "date_ASC")
+            $filter = "date ASC";
+        else if($_POST['filter'] == "price_DESC")
+            $filter = "price DESC";
+        else
+            $filter = "date DESC";
+    }
+    else if(isset($_GET['filter']))
+        $filter = $_GET['filter'];
+    else
+        $filter = "date ASC";
+    if(isset($_GET['good_no']))
+        $good_no = $_GET['good_no'];
+    else
+        $good_no = -1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +62,62 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
+
+    <script>
+        $(function () {
+                $("#btn_show").on("click",function(){
+                    $("#inner").toggle();
+                })
+                $("#btn_show0").on("click",function(){
+                    $("#inner0").toggle();
+                })
+                $("#btn_show1").on("click",function(){
+                    $("#inner1").toggle();
+                })
+                $("#btn_show2").on("click",function(){
+                    $("#inner2").toggle();
+                })
+                $("#btn_show3").on("click",function(){
+                    $("#inner3").toggle();
+                })
+                $("#btn_show4").on("click",function(){
+                    $("#inner4").toggle();
+                })
+                $("#btn_show5").on("click",function(){
+                    $("#inner5").toggle();
+                })
+                $("#btn_show6").on("click",function(){
+                    $("#inner6").toggle();
+                })
+                $("#btn_show7").on("click",function(){
+                    $("#inner7").toggle();
+                })
+                $("#btn_show8").on("click",function(){
+                    $("#inner8").toggle();
+                })
+                $("#btn_show9").on("click",function(){
+                    $("#inner9").toggle();
+                })
+
+                $("#price_ASC").on("click",function(){
+                    $("#filter").prop("value", "price_ASC");
+                })
+                $("#date_ASC").on("click",function(){
+                    $("#filter").prop("value", "date_ASC");
+                })
+                $("#price_DESC").on("click",function(){
+                    $("#filter").prop("value", "price_DESC");
+                })
+                $("#date_DESC").on("click",function(){
+                    $("#filter").prop("value", "date_DESC");
+                })
+
+                <?php
+                if($_SESSION['username']=="")             
+                    echo '$("#addcart").hide()';
+                ?>
+        });
+    </script>
 
 
 </head>
@@ -90,55 +176,91 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-6">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href=""><?php echo $_SESSION['user_level']?></a></li>
-                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>            
-                    </ul>
+                        <li><a href="">Level:<?php echo $_SESSION['user_level']?></a></li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
+                        
+                    </ul>          
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
-            
-            <div class="col-12">
-                <div class="course-content">
-                    <div class="course-content-wrap">
-                        <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                            <header class="entry-header">
-                                <h2 class="entry-title"><button class="astext" id="btn_show1" >憶起來學著「懂」攝影吧</button></h2>
-                                <div class="entry-meta flex flex-wrap align-items-center">
-                                    <div class="course-author">邱旭蓮、何俊霖 </div>
-                                    <div class="course-date">111/04/10</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-                            <div class="course-cost">
-                                $10000　<a class="fa fa-pencil-square-o" href="#"></a>
-                            </div><!-- .course-cost -->
-                           
-                        </footer><!-- .entry-footer -->
-                        <footer id="inner1"  style="display:none">
-                            <div>
-                            <h3>詳情</h3> <br>
-                            <ul>
-                                <li>時間：下午4:10-6:00 </li>
-                                <li>本活動不提供現場報名。謝謝</li>
-                                <li>國文系及台文所學生參與本科系專業之活動無法計入通識護照 </li>
-                                <li>本次活動可登錄通識護照1場次，須確實簽到及簽退方予認證 </li>
-                                <li>自108學年度起施行「通識護照提醒名單」機制：無故缺席已報名之通識護照活動「累計3次」者，將列入提醒名單，暫停當學期及次學期於線上報名系統管理系統報名之權限(僅能於活動當日至現場遞補) </li>
-                            </ul>
-                            </div>
-                        </footer>
-                    </div><!-- .course-content-wrap -->
-                   
-                </div><!-- .course-content -->
+            <div class="col-md-6">
+                <div class="breadcrumbs">
+                    <div style = "text-align:right;">
+                        <button type = submit id = "btn_show" class="astext">排序</button>
+                    </div><!-- .course-cost -->
+                    </footer><!-- .entry-footer -->
+                    <footer id="inner" style="display:none">
+                        <div>
+                            <form name = "f1" method = "POST" action = "">
+                                <p style = "text-align:right;">
+                                    <input type = "hidden" id = "filter" name = "filter">
+                                    <button id = "price_ASC" type = "submit" class="astext">價錢由低到高　</button>
+                                    <button id = "date_ASC" type = "submit" class="astext">日期由舊到新</button>
+                                    <br>
+                                    <button id = "price_DESC" type = "submit" class="astext">價錢由高到低　</button>
+                                    <button id = "date_DESC" type = "submit" class="astext">日期由新到舊</button>
+                                </p>
+                            </form>
+                        </div>
+                    </footer>
+                </div><!-- .breadcrumbs -->
             </div><!-- .col -->
-
-            
-
         </div><!-- .row -->
 
-
-    </div><!-- .container -->
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="featured-courses courses-wrap">
+                    <div class="row mx-m-25">
+                        <?php
+                            if($result = mysqli_query($link, "SELECT * FROM goods ORDER BY ".$filter))
+                            {
+                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
+                                {
+                                    if($i >= $page * 10 - 10 && $i < $page * 10)
+                                    {
+                                        echo '<div class="col-md-12">
+                                            <div class="course-content">
+                                                <div class="course-content-wrap">
+                                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
+                                                    <header class="entry-header">
+                                                            <h2 class="entry-title"><button class="astext" id="btn_show'.($i % 10).'" >'.$row['theme'].'</button></h2>
+                                                            <div class="entry-meta flex flex-wrap align-items-center">
+                                                                <div class="course-author">'.$row['lecturer'].'</div>
+                                                                <div class="course-date">'.$row['date'].'</div>
+                                                            </div><!-- .course-date -->
+                                                        </header><!-- .entry-header -->
+                                                        <div class="course-cost">
+                                                            $'.$row['price'].' <a id="addcart" class="fa fa-cart-plus" href="./buyer/addgoods.php?good_no='.$row['no'].'"></a>
+                                                        </div><!-- .course-cost -->
+                                                    
+                                                    </footer><!-- .entry-footer -->
+                                                    <footer id="inner'.($i % 10).'"  style="display:none">
+                                                        <div>
+                                                        <h3>詳情</h3> <br>
+                                                        <ul>
+                                                            <li>'.$row['detail_one'].'</li>
+                                                            <li>'.$row['detail_two'].'</li>
+                                                            <li>'.$row['detail_three'].'</li>
+                                                            <li>'.$row['detail_four'].'</li>';
+                                                        if($row['detail_five'] != NULL)
+                                                            echo '<li>'.$row['detail_five'].'</li>';
+                                                        echo '</ul>
+                                                        </div>
+                                                    </footer>
+                                                </div><!-- .course-content-wrap -->
+                                            </div><!-- .course-content -->
+                                        </div><!-- .col -->';
+                                    }
+                                }
+                            }
+                        ?>
+                    </div><!-- .row -->
+                </div><!-- .featured-courses -->
+            </div>
+        </div>            
+    </div>
    
     <script type='text/javascript' src='../js/jquery.js'></script>
     <script type='text/javascript' src='../js/swiper.min.js'></script>
