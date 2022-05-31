@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (isset($_POST['username']) && isset($_POST['password']) )
+        $_SESSION['username'] = $_POST['username'] ;
+    else if(!isset($_SESSION['username']))
+        $_SESSION['username'] = "";
+?>
+
 <!DOCTYPE html>
 
 <?php
@@ -130,14 +139,12 @@ if (isset($_POST['name'])) {
                             </div><!-- .entry-content -->
 
                             <footer class="entry-footer read-more">
-                            <?php
-                            if($_SESSION['username']=="")             
-                                echo '<a href="./buyernonuser.php">買家專區</a>';
-                            else    
-                                echo '<a href="./buyer.php">買家專區</a>';
-                            ?>    
-                                
-                                
+                                <?php
+                                if($_SESSION['username']=="")             
+                                    echo '<a href="./buyernonuser.php">買家專區</a>';
+                                else    
+                                    echo '<a href="./buyer.php">買家專區</a>';
+                                ?>       
                             </footer><!-- .entry-footer -->
                             <footer class="entry-footer read-more">
                                 <a href="./login/SignIn/seller.php">賣家登入</a>
