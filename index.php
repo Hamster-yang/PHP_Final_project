@@ -130,7 +130,13 @@ if (isset($_POST['name'])) {
                             </div><!-- .entry-content -->
 
                             <footer class="entry-footer read-more">
-                                <a href="./buyer.php">買家專區</a>
+                            <?php
+                            if($_SESSION['username']=="")             
+                                echo '<a href="./buyernonuser.php">買家專區</a>';
+                            else    
+                                echo '<a href="./buyer.php">買家專區</a>';
+                            ?>    
+                                
                                 
                             </footer><!-- .entry-footer -->
                             <footer class="entry-footer read-more">
