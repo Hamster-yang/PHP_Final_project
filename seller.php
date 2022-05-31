@@ -230,7 +230,7 @@
                                                             </div><!-- .course-date -->
                                                         </header><!-- .entry-header -->
                                                         <div class="course-cost">
-                                                            $'.$row['price'].' <a class="fa fa-minus" href="./seller.php?good_no='.$row['no'].'"></a>
+                                                            $'.$row['price'].' <a class="fa fa-minus" href="./seller.php?good_no='.$row['no'].'&page='.$page.'&filter='.$filter.'"></a>
                                                         </div><!-- .course-cost -->
                                                     
                                                     </footer><!-- .entry-footer -->
