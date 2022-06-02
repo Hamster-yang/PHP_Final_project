@@ -46,7 +46,7 @@
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['user_level'] = "銅會員";
                 $header_mail="From:service@group27.com";
-                mail($_POST['email'],"通識屋 帳號註冊通知","您好，恭喜您成功註冊本網站會員\n以下是您的註冊資訊:\n帳號:".$_POST['username']."\n會員等級:銅會員.\n\n如有錯誤，請聯絡 service@group27.com ，謝謝您",$header_mail)
+                mail($_POST['email'],"通識屋 帳號成功註冊通知","您好，恭喜您成功註冊本網站會員\n以下是您的註冊資訊:\n帳號名稱:".$_POST['username']."\n會員等級:銅會員.\n\n通識屋:https://localhost/PHP_Final_project/index.php \n\n如有任何問題，請聯絡客服 service.group27@gmail.com ，我們將盡快協助您，謝謝您\n\n\n[本電子郵件係由系統自動發送，請勿直接回覆本郵件。]",$header_mail)
                 or die("郵件傳送失敗！");
                 header("Location:./../buyer.php");
             } else {

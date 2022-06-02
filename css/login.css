@@ -7,7 +7,7 @@
     background-image: url("../images/hero-bg_login.jpg");
   }
   
-  #username, #password, h3, #fullname, #comfirm_password,#username2, #password2{
+  #username, #email ,  #password, h3, #fullname, #comfirm_password,#username2, #password2 , #email0{
     width: 200px;
     height: 20px;
     margin: 10px;
