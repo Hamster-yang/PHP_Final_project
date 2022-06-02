@@ -110,7 +110,7 @@
             <h3>註冊 Sign Up</h3>
 
             <form action="./check_signup.php" id="form2" method="POST">
-                <input type="text" id="fullname" name="fullname" placeholder="使用者全名" required>
+                <input type="text" id="email" name="email" placeholder="電子郵件" required>
                 <div class="tab"></div>
                 <input type="text" id="username" name="username" placeholder="帳號" required>
                 <div class="tab"></div>

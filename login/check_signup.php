@@ -11,7 +11,7 @@
     // 送出編碼的MySQL指令
     mysqli_query($link, 'SET CHARACTER SET utf8');
     mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
-
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
     $_SESSION['flag'] = "null";
@@ -39,16 +39,21 @@
     {
         //資料庫新增存檔
         if (isset($_POST['username'])) {
-            $sql = "insert into account values ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . "buyer" . "','" . "銅會員" . "','". $num_cnt ."')";
+            $sql = "insert into account values ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . $_POST['email'] . "','" . "buyer" . "','" . "銅會員" . "','". $num_cnt ."')";
 
             if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
             {
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['user_level'] = "銅會員";
+                $header_mail="From:service@group27.com";
+                mail($_POST['email'],"通識屋 帳號註冊通知","您好，恭喜您成功註冊本網站會員\n以下是您的註冊資訊:\n帳號:".$_POST['username']."\n會員等級:銅會員.\n\n如有錯誤，請聯絡 service@group27.com ，謝謝您",$header_mail)
+                or die("郵件傳送失敗！");
                 header("Location:./../buyer.php");
             } else {
                 $msg = "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" . mysqli_error($link) . "</span>";
             }
+
+            
 
         }
     }
