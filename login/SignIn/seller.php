@@ -15,6 +15,9 @@
             function link_index() {
                 window.location.href="./../../logout.php";
             }
+            function link_forget() {
+                window.location.href="./forgot_password.php";
+            }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
@@ -148,7 +151,7 @@
                 <input type="submit" value="登入" class="submit">
                 <!--<input type="submit" value="登入" class="submit" onclick="location.href='test.html'">-->
             </form>  
-
+            <h5 onclick="link_forget()">忘記密碼</h5>
             <h5 onclick="link_signup()">註冊帳號</h5>
             <h5 onclick="link_index()">回首頁</h5>
             </div><!-- login end-->

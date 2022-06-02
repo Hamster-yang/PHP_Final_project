@@ -7,7 +7,7 @@
     background-image: url("../images/hero-bg_login.jpg");
   }
   
-  #username, #email ,  #password, h3, #fullname, #comfirm_password,#username2, #password2 , #email0{
+  #username, #email ,  #password, h3, #fullname, #comfirm_password,#username2, #password2 , #key{
     width: 200px;
     height: 20px;
     margin: 10px;
@@ -32,7 +32,7 @@
     
     padding: 10px;
     width: 230px;
-    height: 300px;
+    height: 320px;
     background-color: white;
     border-radius: 5px;
     border-top: 10px solid #778899	;
@@ -45,6 +45,23 @@
       
   }
   
+  #container3{
+    
+    padding: 10px;
+    width: 230px;
+    height: 230px;
+    background-color: white;
+    border-radius: 5px;
+    border-top: 10px solid #778899	;
+    box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+    
+    /*定位對齊*/
+    position:relative;   
+    margin: auto;
+    top: 100px;
+      
+  }
+
   .system_name{
     /*定位對齊*/
     position:relative;   

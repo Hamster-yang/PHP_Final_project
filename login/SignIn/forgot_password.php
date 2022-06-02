@@ -1,15 +1,16 @@
 <?php
     session_start();
+
+    
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        
         <link rel="stylesheet" href="../../css/login.css" />
         <link rel="icon" href="./../../images/home.ico" type="image/x-icon" />
         <script>
             function link_signup() {
-                window.location.href="./../../Login/signup.php";
+                window.location.href="../../Login/signup.php";
             }
             function link_index() {
                 window.location.href="./../../logout.php";
@@ -116,35 +117,19 @@
         </div>
         
         <div class="login_page">
-        <div id="container1">
+        <div id="container3">
 
             <div class="login">  
             
-            <h3>登入 Sign In</h3>
+            <h3>登入 Sing In</h3>
             <!--<form action="用戶管理.php" id="form1">-->
-            <form action="./check_buyer.php" id="form1" method="POST">
-                <input type="text" id="username" name="username" placeholder="帳號" required>
+            <form action="./verify_email.php" id="form1" method="POST">
+                <input type="text" id="email" name="email" placeholder="請輸入註冊電子郵件" required>
                 <div class="tab"></div>
-                <input type="password" id="password" name="password" placeholder="密碼" required>
-                <?php
-                    if(isset($_SESSION['flag']) && $_SESSION['flag']=="error")
-                    {
-                ?>
-                <label class="error">帳號或密碼錯誤</label>
-                <?php
-                    }
-                    else if(isset($_SESSION['flag']) && $_SESSION['flag']=="null")
-                    {
-                ?>
-                <label class="error">查無此帳號</label>
-                <?php
-                    }
-                ?>
-                <div class="tab"></div>
-                <input type="submit" value="登入" class="submit">
+                <input type="submit" value="找回密碼" class="submit">
                 <!--<input type="submit" value="登入" class="submit" onclick="location.href='test.html'">-->
             </form>  
-            <h5 onclick="link_forget()">忘記密碼</h5>        
+
             <h5 onclick="link_signup()">註冊帳號</h5>
             <h5 onclick="link_index()">回首頁</h5>
             </div><!-- login end-->
