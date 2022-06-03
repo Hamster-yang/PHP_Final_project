@@ -20,11 +20,6 @@ mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 
 //資料庫新增存檔
 if (isset($_POST['name'])) {
-    //$tmp_name = $_FILES['picture']['tmp_name'];
-    //$file_name = $_FILES['picture']['name'];
-    //$file_type = $_FILES['picture']['type'];
-    //$fp = fopen($tmp_name, "rb");
-    //$file = addslashes(fread($fp, filesize($tmp_name)));
     $name = $_POST['name'];
     $message = $_POST['message'];
     $today = getdate($stamps);
@@ -36,7 +31,7 @@ if (isset($_POST['name'])) {
     $today = getdate($stamps);
     $day = $today['mday'];
 
-    $sql = "insert into message_board values ('$name','$message','','','$year"."-".$month."-"."$day')";
+    $sql = "insert into message_board values ('$name','$message','$file_type','$file','$year"."-".$month."-"."$day')";
 
     if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
     {
@@ -157,90 +152,7 @@ if (isset($_POST['name'])) {
     </div><!-- .page-header -->
 
     
-    <section class="testimonial-section">
-        <!-- Swiper -->
-        <div class="swiper-container testimonial-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-6 order-2 order-lg-1 flex align-items-center mt-5 mt-lg-0">
-                                <figure class="user-avatar">
-                                    <img src="images/user-1.jpg" alt="">
-                                </figure><!-- .user-avatar -->
-                            </div><!-- .col -->
-
-                            <div class="col-12 col-lg-6 order-1 order-lg-2 content-wrap h-100">
-                                <div class="entry-content">
-                                    <p>Together as teachers, students and universities we can help make this education available for everyone.</p>
-                                </div><!-- .entry-content -->
-
-                                <div class="entry-footer">
-                                    <h3 class="testimonial-user">Russell Stephens - <span>University in UK</span></h3>
-                                </div><!-- .entry-footer -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </div><!-- .swiper-slide -->
-
-                <div class="swiper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-6 order-2 order-lg-1 flex align-items-center mt-5 mt-lg-0">
-                                <figure class="user-avatar">
-                                    <img src="images/user-2.jpg" alt="">
-                                </figure><!-- .user-avatar -->
-                            </div><!-- .col -->
-
-                            <div class="col-12 col-lg-6 order-1 order-lg-2 content-wrap h-100">
-                                <div class="entry-content">
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div><!-- .entry-content -->
-
-                                <div class="entry-footer">
-                                    <h3 class="testimonial-user">Robert Stephens - <span>University in Oxford</span></h3>
-                                </div><!-- .entry-footer -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </div><!-- .swiper-slide -->
-
-                <div class="swiper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-6 flex order-2 order-lg-1 align-items-center mt-5 mt-lg-0">
-                                <figure class="user-avatar">
-                                    <img src="images/user-3.jpg" alt="">
-                                </figure><!-- .user-avatar -->
-                            </div><!-- .col -->
-
-                            <div class="col-12 col-lg-6 order-1 order-lg-2 content-wrap h-100">
-                                <div class="entry-content">
-                                    <p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                </div><!-- .entry-content -->
-
-                                <div class="entry-footer">
-                                    <h3 class="testimonial-user">James Stephens - <span>University in Cambridge</span></h3>
-                                </div><!-- .entry-footer -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </div><!-- .swiper-slide -->
-            </div><!-- .swiper-wrapper -->
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-6 mt-5 mt-lg-0">
-                        <div class="swiper-pagination position-relative flex justify-content-center align-items-center"></div>
-                    </div><!-- .col -->
-                </div><!-- .row -->
-            </div><!-- .container -->
-        </div><!-- .testimonial-slider -->
-
-
-
-
-        <div class="container"><!--留言板-->
+    <div class="container"><!--留言板-->
         <div class="row">
             <div class="col-12 offset-lg-1 col-lg-1">
                 
@@ -251,16 +163,18 @@ if (isset($_POST['name'])) {
                     <div class="post-comments">
 
                     <?php
+                            
                             if($result = mysqli_query($link, "SELECT * FROM message_board"))
                             {
                                 for($i = 1; $row = mysqli_fetch_assoc($result); $i++)
                                 {
+                                    $a=rand(1,6);
                                     echo '<h3 class="comments-title"><span class="comments-number">'.$i. 'Comments</span></h3>
                                     <ol class="comment-list">
                                         <li class="comment">
                                             <article class="comment-body">
                                                 <figure class="comment-author-avatar">
-                                                    <img src="images/c-1.png" alt="">
+                                                    <img src="images/images'.$a.'.jpg" alt="">
                                                 </figure><!-- .comment-author-avatar -->
     
                                                 <div class="comment-wrap">
@@ -296,7 +210,6 @@ if (isset($_POST['name'])) {
                             <form class="comment-form" action="" method="POST">
                                 <input type="text" placeholder="稱呼" name="name">
                                 <textarea rows="4" placeholder="留言" name="message"></textarea>
-                                <input type="file" name="picture"></input>
                                 <input type="submit" value="送出">
                             </form><!-- .comment-form -->
                         </div><!-- .comment-respond -->
