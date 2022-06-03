@@ -19,7 +19,10 @@ mysqli_query($link, 'SET CHARACTER SET utf8');
 mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 
 //資料庫新增存檔
-if (isset($_POST['name'])) {
+if (isset($_POST['name'])) {    
+    $stamps = time();
+    $file = "";
+    $file_type = "";
     $name = $_POST['name'];
     $message = $_POST['message'];
     $today = getdate($stamps);
