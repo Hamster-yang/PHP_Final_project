@@ -20,7 +20,7 @@
     $header.="Content-Type:text/html;charset=utf-8\r\n";
     $header.="From:service@group27.com\r\n";
 
-    $to = $_POST['email'];
+    $to = $_SESSION['email'];
     $subject = "=?UTF-8?B?".base64_encode("【通識屋】密碼重設")."?="; //轉換編碼
     $body = "
     <html>
@@ -95,46 +95,6 @@
                         password: {
                             required: "*必填"
                         }
-                    }
-                });
-
-                $("#form2").validate({
-                    submitHandler: function(form) {
-                        //alert("success!");
-                        form.submit();
-                    },
-                    rules: {
-                        fullname: {
-                            required: true
-                        },
-                        username2: {
-                            required: true,
-                            minlength: 4,
-                            maxlength: 10
-                        },
-                        password2: {
-                            required: true
-                        },
-                        comfirm_password: {
-                            required: true,
-                            equalTo: "#password2"
-                        },
-                    },
-                    messages: {
-                        fullname: {
-                            required: "*必填"
-                        },
-                        username2: {
-                            required: "*必填",
-                            minlength: "帳號最少要4個字",
-                            maxlength: "帳號最長10個字"
-                        },
-                        password2: {
-                            required: "*必填"
-                        },
-                        comfirm_password: {
-                            equalTo: "兩次密碼不相符"
-                        },
                     }
                 });
             });

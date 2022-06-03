@@ -123,7 +123,7 @@
             
             <h3>登入 Sing In</h3>
             <!--<form action="用戶管理.php" id="form1">-->
-            <form action="./verify_email.php" id="form1" method="POST">
+            <form action="./before_verify_email.php" id="form1" method="POST">
                 <input type="text" id="email" name="email" placeholder="請輸入註冊電子郵件" required>
                 <div class="tab"></div>
                 <input type="submit" value="找回密碼" class="submit">
