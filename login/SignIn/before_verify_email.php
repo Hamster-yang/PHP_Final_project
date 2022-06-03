@@ -44,9 +44,6 @@
             <form action="" id="form1" method="POST">                
                 <p>系統正在處理中</p>
                 <p>請耐心等候，謝謝</p>
-                <?php
-                    echo $_SESSION['email'];
-                ?>
                 <div class="race-by"></div>                
                 
                 
