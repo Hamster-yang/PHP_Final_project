@@ -16,7 +16,7 @@
 
             //資料庫新增存檔
             if (isset($_SESSION['email'])) {
-                $sql = "update `account` SET `password`='". $rand_password ."' WHERE `eamil` = '". $_SESSION['email'] ."'";
+                $sql = "update `account` SET `password`='". $rand_password ."' WHERE `email` = '". $_SESSION['email'] ."'";
                 
                 if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
                 {
