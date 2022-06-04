@@ -10,11 +10,18 @@
     else if(!isset($_SESSION['user_level']))
         $_SESSION['user_level'] = "未登入" ;
 
-
     if($_SESSION['username']=="")
     {
         echo "<script> {window.alert('請先登入');history.go(-1)} </script>";//返回上頁
     }
+
+    $link = mysqli_connect('localhost','root','root123456','group_27') or die("無法開啟MySQL資料庫連結!<br>");
+
+    mysqli_query($link, 'SET CHARACTER SET utf8');
+    mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+
+    if(isset($_SESSION['new']))
+        mysqli_query($link, "UPDATE `account` SET `password`='".$_SESSION['new']."' WHERE `username` = '".$_SESSION['username']."'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +50,59 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <!--additional method - for checkbox .. ,require_from_group method ...-->
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <!--中文錯誤訊息-->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js "></script>
+    <script>
+        $(document).ready(function($) {
+            //for select
+            $.validator.addMethod("notEqualsto", function(value, element, arg) {
+                return arg != value;
+            }, "您尚未選擇!");
+            
+            $("#f1").validate({
+                submitHandler: function(form) {
+                    //alert("success!");
+                    form.submit();
+                },
+                rules: {
+                    old: {
+                        required: true
+                    },
+                    new: {
+                        required: true
+                    },
+                    new2: {
+                        required: true,
+                        equalTo: "#new"
+                    },
+                },
+                messages: {
+                    old: {
+                        required: "*必填"
+                    },
+                    new: {
+                        required: "*必填"
+                    },
+                    new2: {
+                        equalTo: "兩次密碼不相符"
+                    },
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        .error {
+                color: #D82424;
+                font-weight: normal;
+                font-family: "微軟正黑體";
+                display: inline;
+                padding: 1px;
+        }
+    </style>
 </head>
 <body class="courses-page">
     <div class="page-header">
@@ -134,12 +194,27 @@
                 <div class="contact-form">
                     <h3>密碼修改</h3>
 
-                    <form>
-                        <input type="text" placeholder="帳號">
-                        <input type="password" placeholder="原密碼">
-                        <input type="password" placeholder="新密碼">
-                        <input type="password" placeholder="重新輸入新密碼">
-                        
+                    <form name = "f1" id = "f1" method = "POST" action = "check_system.php">
+                        <input type="password" id="old" name="old" placeholder="原密碼" required>
+                        <?php
+                            if(isset($_SESSION['flag']) && $_SESSION['flag']=="error")
+                            {
+                        ?>
+                        <label class="error">帳號或密碼錯誤</label>
+                        <?php
+                            }
+                            else if(isset($_SESSION['flag']) && $_SESSION['flag']=="null")
+                            {
+                        ?>
+                        <label class="error">查無此帳號</label>
+                        <?php
+                            }
+                        ?>
+                        <div class="tab"></div>
+                        <input type="password" id="new" name="new" placeholder="新密碼" required>
+                        <div class="tab"></div>
+                        <input type="password" id="new2" name="new2" placeholder="重新輸入新密碼" required>
+                        <div class="tab"></div>
                         <input type="submit" value="Send Message">
                     </form>
                 </div><!-- .contact-form -->
