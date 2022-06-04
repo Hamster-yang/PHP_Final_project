@@ -37,6 +37,11 @@
         $good_no = $_GET['good_no'];
     else
         $good_no = -1;
+
+    if(!isset($_SESSION['search']))
+        $_SESSION['search'] = "";
+    if(isset($_POST['search']))
+        $_SESSION['search'] = $_POST['search'];
 ?>
 
 <!DOCTYPE html>
@@ -208,7 +213,15 @@
             <div class="col-md-6">
                 <div class="breadcrumbs">
                     <div style = "text-align:right;">
-                        <button type = submit id = "btn_show" class="astext">排序</button>
+                        <div>
+                            <form name = "f2" method = "POST" action = "">
+                                <p style = "text-align:right;">
+                                    <input type="search" placeholder="" id = "search" name = "search">
+                                    <button type="submit" value=""><i class="fa fa-search"></i></button>
+                                </p>
+                            </form>
+                        </div>
+                        <button type = "submit" id = "btn_show" class="astext">排序</button>
                     </div><!-- .course-cost -->
                     </footer><!-- .entry-footer -->
                     <footer id="inner" style="display:none">
@@ -234,7 +247,7 @@
                 <div class="featured-courses courses-wrap">
                     <div class="row mx-m-25">
                         <?php
-                            if($result = mysqli_query($link, "SELECT * FROM goods ORDER BY ".$filter))
+                            if($result = mysqli_query($link, "SELECT * FROM goods WHERE theme LIKE '%".$_SESSION['search']."%' ORDER BY ".$filter))
                             {
                                 for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
                                 {
