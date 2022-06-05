@@ -250,7 +250,7 @@
                             <li class="active"><a href="#">1</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
                             <div class="col-md-6">
-                                <button>確認購買</button>
+                                <a herf="../buyer/check.php">結帳</a>
                             </div>
                         </ul>
                         
