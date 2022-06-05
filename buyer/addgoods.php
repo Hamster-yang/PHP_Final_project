@@ -20,14 +20,22 @@
 	mysqli_query($link, 'SET CHARACTER SET utf8');
 	mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 	$sql = "insert into shopcart values ('".$member_no."','".$goods_No."')";	
-	if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
-        {
-            $msg = "<span style='color:#0000FF'>資料新增成功!</span>";
-        } else {
-            $msg = "<span style='color:#FF0000'>資料新增失敗！<br>錯誤代碼：" . mysqli_errno($link) . "<br>錯誤訊息：" . mysqli_error($link) . "</span>";
-        }
+	$result = mysqli_query($link, "SELECT * FROM shopcart s WHERE s.good_no = '".$goods_No."'  and s.buyer = $member_no");
+	if ($num = mysqli_num_rows($result))	
+	{		
+		echo "<script> {window.alert('已經在購物車了');history.go(-1)} </script>";//返回上頁
+		// echo "<script> {window.alert('已經在購物車了');location.href='pro_key.php'} </script>";
+		// echo "<script> {window.alert($temp);location.href='pro_key.php'} </script>";//測試有沒有抓到member_no
+	}
+	else
+	{
+		// echo "<script> {window.alert('加入成功');location.href='pro_key.php'} </script>";
+		
+		
+		echo "<script> {window.alert('加入成功');history.go(-1)} </script>";//返回上頁
 
-	echo "<script> {window.alert('加入成功');history.go(-1)} </script>";//返回上頁
+		$result = mysqli_query($link, $sql)	;
+	}
 	mysqli_close($link); // 關閉資料庫連結
 ?>
 <!-- <meta http-equiv="refresh" content="0;url=index.php"> -->
