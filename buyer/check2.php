@@ -186,12 +186,12 @@
                             <!--結帳步驟-->
                             <div class="row justify-content-center text-center mb-5">
                                 <div class="col-12 col-md">
-                                    <div class="alert alert-success rounded-pill mr-2" role="alert">
+                                    <div class="alert alert-secondary rounded-pill mr-2" role="alert">
                                         1.輸入訂單資料
                                     </div>
                                 </div>
                                 <div class="col-12 col-md">
-                                    <div class="alert alert-secondary rounded-pill mr-2" role="alert">
+                                    <div class="alert alert-success rounded-pill mr-2" role="alert">
                                         2.金流付款
                                     </div>
                                 </div>
@@ -209,46 +209,20 @@
                                         <div >
                                             <div >
                                                 <table class="table">
-                                                        <tr>
-                                                            <td colspan="2" scope="col"></td>
-                                                            <td class="align-middle"><b>商品名稱</b></td>
-                                                            <td colspan="2" scope="col"></td>
-                                                            <td class="align-middle text-right"><b>小計</b></td>
-                                                        </tr>
-                                                        
-                                                            
-                                                            <?php
-                                                            $sum=0;
-                                                            if($result = mysqli_query($link, "SELECT * FROM shopcart s, goods g, account a WHERE s.good_no = g.no and s.buyer = $no and s.buyer = a.user_id"))
-                                                            {
-                                                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
-                                                                {
-                                                                    echo '<tr><td colspan="2" scope="col"></td>
-                                                                    <td class="align-middle">'.$row['theme'].'</td>
-                                                                    <td colspan="2" scope="col"></td>
-                                                                    <td class="align-middle text-right">'.$row['price'].'</td></tr>';
-                                                                    $sum+=intval($row['price']);
-                                                                }
-                                                                $sum+=60;
-                                                            }
-                                                            ?>
-                                                        <tr>
-                                                            <td colspan="4"></td>
-                                                            <td class="text-right">運費</td>         
-
-                                                            <td class="text-right">$ 60</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="4"></td>
-                                                            <td class="text-right">合計</td>         
-
-                                                            <td class="text-right">$ <?php echo "$sum" ?></td>
-                                                        </tr>
+                                                      <tr>
+                                                          <td>收件人姓名</td>
+                                                          <td><input type="text"></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td>收件人姓名</td>
+                                                          <td><input type="text"></td>
+                                                      </tr>
                                                 </table>
                                             </div>
                                         </div>
                                         <a href ="./shopcart.php">取消<a>　
-                                        <a href ="./check2.php">下一步<a>
+                                        <a href ="./check.php">上一步<a>　
+                                        <a href ="./check3.php">下一步<a>
                                     </div>
                                 </div>
                             </div>

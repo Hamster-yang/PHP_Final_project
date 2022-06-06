@@ -186,7 +186,7 @@
                             <!--結帳步驟-->
                             <div class="row justify-content-center text-center mb-5">
                                 <div class="col-12 col-md">
-                                    <div class="alert alert-success rounded-pill mr-2" role="alert">
+                                    <div class="alert alert-secondary rounded-pill mr-2" role="alert">
                                         1.輸入訂單資料
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md">
-                                    <div class="alert alert-secondary rounded-pill mr-2" role="alert">
+                                    <div class="alert alert-success rounded-pill mr-2" role="alert">
                                         3.完成
                                     </div>
                                 </div>
@@ -213,7 +213,7 @@
                                                             <td colspan="2" scope="col"></td>
                                                             <td class="align-middle"><b>商品名稱</b></td>
                                                             <td colspan="2" scope="col"></td>
-                                                            <td class="align-middle text-right"><b>小計</b></td>
+                                                            <td class="align-middle text-right">小計</td>
                                                         </tr>
                                                         
                                                             
@@ -229,15 +229,9 @@
                                                                     <td class="align-middle text-right">'.$row['price'].'</td></tr>';
                                                                     $sum+=intval($row['price']);
                                                                 }
-                                                                $sum+=60;
                                                             }
                                                             ?>
-                                                        <tr>
-                                                            <td colspan="4"></td>
-                                                            <td class="text-right">運費</td>         
-
-                                                            <td class="text-right">$ 60</td>
-                                                        </tr>
+                                                        
                                                         <tr>
                                                             <td colspan="4"></td>
                                                             <td class="text-right">合計</td>         
@@ -248,7 +242,8 @@
                                             </div>
                                         </div>
                                         <a href ="./shopcart.php">取消<a>　
-                                        <a href ="./check2.php">下一步<a>
+                                        <a href ="./check2.php">上一步<a>　
+                                        <a href ="./order.php">確定結帳<a>　
                                     </div>
                                 </div>
                             </div>

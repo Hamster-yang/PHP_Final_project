@@ -125,7 +125,8 @@
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                                     <li><a href="../buyer.php">主頁　</a></li>
                                     <li class="current-menu-item"><a href="./shopcart.php">購物車　</a></li>
-                                    <li ><a href="./system.php">會員中心　</a></li>
+                                    <li ><a href="../buyer/order.php">訂單　</a></li>
+                                    <li ><a href="./system.php">會員中心　</a></li>                                    
                                     <?php
                                         if ($_SESSION['username']!="")
                                         {
@@ -249,9 +250,9 @@
                         <ul class="flex flex-wrap align-items-center order-2 order-lg-1 p-0 m-0">
                             <li class="active"><a href="#">1</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            <div class="col-md-6">
-                                <a herf="../buyer/check.php">結帳</a>
-                            </div>
+                            <li><div class="col-md-6">
+                                <a href="../buyer/check.php">結帳　</a>
+                        </div></li>
                         </ul>
                         
                     </div>
