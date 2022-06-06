@@ -244,11 +244,15 @@
 
                                                             <td class="text-right">$ <?php echo "$sum" ?></td>
                                                         </tr>
+                                                        <tr >
+                                                        <td colspan = "6">
+                                                            <a href ="./shopcart.php">取消<a>　
+                                                            <a href ="./check2.php">下一步<a></td>                                                      
+                                                        </tr>
                                                 </table>
                                             </div>
                                         </div>
-                                        <a href ="./shopcart.php">取消<a>　
-                                        <a href ="./check2.php">下一步<a>
+                                        
                                     </div>
                                 </div>
                             </div>

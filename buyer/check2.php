@@ -103,6 +103,14 @@
                 $("#btn_show10").on("click",function(){
                     $("#inner10").toggle();
                 })
+                $("#radio").on("click",function(){
+                    $("#radio_in").toggle();
+                })
+                $("#radioo").on("click",function(){
+                    $("#radioo_in1").toggle();
+                    $("#radioo_in2").toggle();
+                    $("#radioo_in3").toggle();
+                })
         });
     </script>
     
@@ -204,29 +212,47 @@
 
                             <!--Collapse-->
                             <div class="row justify-content-center">
-                                <div class="col col-md-8">
+                                <div class="col col-md-10">
                                     <div >
                                         <div >
                                             <div >
+                                            <form name="MyForm1" action="" method="POST" enctype="multipart/form-data">
                                                 <table class="table">
                                                       <tr>
                                                           <td>收件人姓名</td>
-                                                          <td><input type="text"></td>
+                                                          <td><input type="text" name = "user" ></td>
                                                       </tr>
                                                       <tr>
-                                                          <td>收件人姓名</td>
-                                                          <td><input type="text"></td>
+                                                          <td>取貨方式</td>
+                                                            <td><span><input type="radio" name="pay" value = "1"/>
+                                                                超商取貨(7-11)</span>
+                                                            <span><input type="radio" id="radio" name="pay" value = "2"/>
+                                                                宅配</span> <input type="text" style="display:none" id="radio_in"></td>       
                                                       </tr>
+                                                      <tr rowspan="3">
+                                                          <td>付款方式</td>
+                                                          <td><span><input type="radio" name="way" value = "1"/>
+                                                                貨到付款</span>
+                                                            <span><input type="radio" id="radioo" name="way" value = "2"/>
+                                                                信用卡</span> <input type="text" style="display:none" id="radioo_in1">
+                                                                <input type="text" style="display:none" id="radioo_in2">
+                                                                <input type="text" style="display:none" id="radioo_in3"></td>
+                                                      </tr>
+                                                      <tr >
+                                                        <td colspan = "2">
+                                                            <a href ="./shopcart.php">取消<a>　
+                                                            <a href ="./check.php">上一步<a>　
+                                                            <a href ="./check3.php">確定結帳<a></td>                                                      
+                                                        </tr>
                                                 </table>
-                                            </div>
+                                            </form>
                                         </div>
-                                        <a href ="./shopcart.php">取消<a>　
-                                        <a href ="./check.php">上一步<a>　
-                                        <a href ="./check3.php">下一步<a>
                                     </div>
+                                    
                                 </div>
                             </div>
-                        </div>                                                                                                                
+                        </div>
+                    </div>                                                                                                                
     </div><!-- .container -->
 
    

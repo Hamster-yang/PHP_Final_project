@@ -15,11 +15,6 @@
     else
     $no = -1;
 
-    if($_SESSION['username']=="")
-    {
-        echo "<script> {window.alert('請先登入');history.go(-1)} </script>";//返回上頁
-    }
-
 ?>
 
 <?php
@@ -31,7 +26,17 @@
     mysqli_query($link, 'SET CHARACTER SET utf8');
     mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 
-    //mysqli_close($link); // 關閉資料庫連結
+    if($result = mysqli_query($link, "SELECT * FROM shopcart s WHERE s.buyer = $no"))
+    {
+        while ($row = mysqli_fetch_assoc($result)) 
+        {
+            $goods = $row['good_no'];
+            $sql = "insert into orders values ('".$no."','".$goods."','配送中')";	 
+            mysqli_query($link, $sql);
+        }
+    }
+    $sqll = "DELETE FROM shopcart  where buyer = $no";
+    $result = mysqli_query($link,$sqll);
 ?>
 
 
@@ -207,43 +212,24 @@
                                 <div class="col col-md-8">
                                     <div >
                                         <div >
-                                            <div >
+                                            <div >                                                                                          
                                                 <table class="table">
-                                                        <tr>
-                                                            <td colspan="2" scope="col"></td>
-                                                            <td class="align-middle"><b>商品名稱</b></td>
-                                                            <td colspan="2" scope="col"></td>
-                                                            <td class="align-middle text-right">小計</td>
+                                                        <tr>  
+                                                               <td></td>                                 
+                                                            <td colspan = "2" class="align-middle"><b><h1>感謝您的下單 歡迎下次光臨</h1></b></td>
+                                                          
                                                         </tr>
-                                                        
-                                                            
-                                                            <?php
-                                                            $sum=0;
-                                                            if($result = mysqli_query($link, "SELECT * FROM shopcart s, goods g, account a WHERE s.good_no = g.no and s.buyer = $no and s.buyer = a.user_id"))
-                                                            {
-                                                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
-                                                                {
-                                                                    echo '<tr><td colspan="2" scope="col"></td>
-                                                                    <td class="align-middle">'.$row['theme'].'</td>
-                                                                    <td colspan="2" scope="col"></td>
-                                                                    <td class="align-middle text-right">'.$row['price'].'</td></tr>';
-                                                                    $sum+=intval($row['price']);
-                                                                }
-                                                            }
-                                                            ?>
-                                                        
-                                                        <tr>
-                                                            <td colspan="4"></td>
-                                                            <td class="text-right">合計</td>         
-
-                                                            <td class="text-right">$ <?php echo "$sum" ?></td>
+                                                       
+                                                        <tr >
+                                                            <td></td><td></td>
+                                                            <td colspan = "2" class="align-middle">
+                                                                <a href ="../buyer.php">回首頁<a>　　
+                                                                <a href ="./order.php">查看訂單<a>　</td> 
                                                         </tr>
                                                 </table>
                                             </div>
                                         </div>
-                                        <a href ="./shopcart.php">取消<a>　
-                                        <a href ="./check2.php">上一步<a>　
-                                        <a href ="./order.php">確定結帳<a>　
+                                        
                                     </div>
                                 </div>
                             </div>
