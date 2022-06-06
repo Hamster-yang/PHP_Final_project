@@ -48,6 +48,19 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
+
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script src="./page1.js"></script>
+
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
     <style type="text/css">
         .error {
@@ -137,80 +150,61 @@
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
             
-            <div class="col-12">
-                <div class="contact-form">
-                    <h3>會員資料修改</h3>
 
-                    <h5>修改會員等級</h5>
-                    <form action="./change_userlevel.php" method="POST">
-                        <input type="text" id="username" name="username" placeholder="會員帳號">
-                        <input type="text" id="userlevel" name="userlevel" placeholder="會員等級">
-                        <div class="tab"></div>             
-                        <input type="submit" value="修改會員等級" class="submit">
-                        <?php
-                            if(isset($_SESSION['msg1']))
-                            {
-                        ?>
-                        <label class="error"><?php echo $_SESSION['msg1'] ?></label>
-                        <?php
-                            }
-                        ?>
-                    </form>
-                    <br><br>
-                    <h5>重設會員密碼</h5>
-                    <form action="./change_password.php" method="POST">
-                        <input type="text" id="username" name="username" placeholder="會員帳號">
-                        <input type="text" id="password" name="password" placeholder="重設帳號密碼">
-                        <div class="tab"></div>             
-                        <input type="submit" value="重設會員密碼" class="submit">
-                        <?php
-                            if(isset($_SESSION['msg2']))
-                            {
-                        ?>
-                        <label class="error"><?php echo $_SESSION['msg2'] ?></label>
-                        <?php
-                            }
-                        ?>
-                    </form>
-                    <br><br>
-                    <h5>刪除會員資料</h5>
-                    <form action="./delete_username.php" method="POST">
-                        <input type="text" id="username" name="username" placeholder="會員帳號">
-                        <div class="tab"></div>             
-                        <input type="submit" value="刪除會員資料" class="submit">
-                        <?php
-                            if(isset($_SESSION['msg3']))
-                            {
-                        ?>
-                        <label class="error"><?php echo $_SESSION['msg3'] ?></label>
-                        <?php
-                            }
-                        ?>
-                    </form>
-                    
-                </div><!-- .contact-form -->                
-           
-                <div class="contact-form">
-                    <h3>會員資料</h3>
-
-                    <h5>共<?php echo $num; ?>筆</h5>
-                    <table>
+            <div class="col-md-8 text-center">
+                
+                <h3>會員資料修改</h3>
+                <form class="form-horizontal form-inline" name="form1" id="form1" method="post">
+                    <input type="hidden" name="oper" id="oper" value="insert">
+                    <input type="hidden" name="stud_no_old" id="stud_no_old" value="">
+                    <table id="edit" class="table table-striped table-bordered">
+                        <thead>
                             <tr>
-                                <th>會員帳號</th>
-                                <th>會員權限</th>
-                                <th>會員等級</th>
+                                <th class="text-center">編號</th>
+                                <th class="text-center">帳號</th>
+                                <th class="text-center">郵件</th>
+                                <th class="text-center">會員等級</th>
+                                <th class="text-center">新增/取消</th>
+                            </tr>
                             <tr>
-                                
-                            <?php echo $rows ?>
-                            
-
+                                <td class="text-center">
+                                    <input type="text" id="user_id" name="user_id">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="user_name" name="user_name">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="user_email" name="user_email">                                     
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="user_level" name="user_level">
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary btn-xs" id="btn-save"><i class="glyphicon glyphicon-save"></i>新增</button>
+                                    <button type="reset" class="btn btn-danger btn-xs" id="btn-cancel">取消</button>
+                                </td>
+                            </tr>
+                        </thead>
                     </table>
                     
-                </div><!-- .contact-form -->
+                    <table id="example" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">編號</th>
+                                <th class="text-center">帳號</th>
+                                <th class="text-center">郵件</th>
+                                <th class="text-center">會員等級</th>
+                                <th class="text-center">修改/刪除</th>
+                            </tr>
+                        </thead>
+                    </table>
+                        
+                </form>
+                </div><!-- .contact-form -->                                           
             </div><!-- .col -->
 
+            <div class="col-12"></div>
             
-        </div><!-- .row -->
 
 
     </div><!-- .container -->
