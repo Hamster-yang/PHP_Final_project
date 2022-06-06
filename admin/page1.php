@@ -59,7 +59,7 @@
     <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
     <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-    <script src="./page1.js"></script>
+    
 
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
     <style type="text/css">
@@ -149,9 +149,11 @@
                     </ul>
                 </div><!-- .breadcrumbs -->
             </div><!-- .col -->
-            
-
-            <div class="col-md-8 text-center">
+        </div>   
+    </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6 text-center">
                 
                 <h3>會員資料修改</h3>
                 <form class="form-horizontal form-inline" name="form1" id="form1" method="post">
@@ -200,16 +202,16 @@
                     </table>
                         
                 </form>
-                </div><!-- .contact-form -->                                           
-            </div><!-- .col -->
+            </div><!-- .col-md-8 text-center -->                                           
+        </div><!-- .row -->
 
-            <div class="col-12"></div>
+        <div class="col-12"></div>
             
 
 
-    </div><!-- .container -->
+    
 
-   
+    <script src="./page1.js"></script>
     <script type='text/javascript' src='../js/jquery.js'></script>
     <script type='text/javascript' src='../js/swiper.min.js'></script>
     <script type='text/javascript' src='../js/masonry.pkgd.min.js'></script>
