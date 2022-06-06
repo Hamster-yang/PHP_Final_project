@@ -32,11 +32,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-
+    <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
+    
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="../css/font-awesome.min.css">
-
+    
     <!-- ElegantFonts CSS -->
     <link rel="stylesheet" href="../css/elegant-fonts.css">
 
@@ -50,15 +50,12 @@
     <link rel="stylesheet" href="../css/style2.css">
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
     <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
-
-    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    
+    
     
 
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
@@ -153,7 +150,7 @@
     </div>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-8 text-center">
                 
                 <h3>會員資料修改</h3>
                 <form class="form-horizontal form-inline" name="form1" id="form1" method="post">
@@ -209,10 +206,15 @@
             
 
 
-    
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
     <script src="./page1.js"></script>
-    <script type='text/javascript' src='../js/jquery.js'></script>
+    <!--<script type='text/javascript' src='../js/jquery.js'></script>-->
     <script type='text/javascript' src='../js/swiper.min.js'></script>
     <script type='text/javascript' src='../js/masonry.pkgd.min.js'></script>
     <script type='text/javascript' src='../js/jquery.collapsible.min.js'></script>
