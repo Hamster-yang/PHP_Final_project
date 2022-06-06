@@ -6,35 +6,6 @@
     }
 ?>
 
-<?php
-    $link = mysqli_connect('localhost','root','root123456','group_27') or die("無法開啟MySQL資料庫連結!<br>");
-
-    if(isset($_GET['page']))
-        $page = $_GET['page'];
-    else
-        $page = 1;
-
-    if(isset($_POST['filter']))
-    {
-        if($_POST['filter'] == "price_ASC")
-            $filter = "price ASC";
-        else if($_POST['filter'] == "date_ASC")
-            $filter = "date ASC";
-        else if($_POST['filter'] == "price_DESC")
-            $filter = "price DESC";
-        else
-            $filter = "date DESC";
-    }
-    else if(isset($_GET['filter']))
-        $filter = $_GET['filter'];
-    else
-        $filter = "date ASC";
-    if(isset($_GET['good_no']))
-        $good_no = $_GET['good_no'];
-    else
-        $good_no = -1;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,62 +33,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
-
-    <script>
-        $(function () {
-                $("#btn_show").on("click",function(){
-                    $("#inner").toggle();
-                })
-                $("#btn_show0").on("click",function(){
-                    $("#inner0").toggle();
-                })
-                $("#btn_show1").on("click",function(){
-                    $("#inner1").toggle();
-                })
-                $("#btn_show2").on("click",function(){
-                    $("#inner2").toggle();
-                })
-                $("#btn_show3").on("click",function(){
-                    $("#inner3").toggle();
-                })
-                $("#btn_show4").on("click",function(){
-                    $("#inner4").toggle();
-                })
-                $("#btn_show5").on("click",function(){
-                    $("#inner5").toggle();
-                })
-                $("#btn_show6").on("click",function(){
-                    $("#inner6").toggle();
-                })
-                $("#btn_show7").on("click",function(){
-                    $("#inner7").toggle();
-                })
-                $("#btn_show8").on("click",function(){
-                    $("#inner8").toggle();
-                })
-                $("#btn_show9").on("click",function(){
-                    $("#inner9").toggle();
-                })
-
-                $("#price_ASC").on("click",function(){
-                    $("#filter").prop("value", "price_ASC");
-                })
-                $("#date_ASC").on("click",function(){
-                    $("#filter").prop("value", "date_ASC");
-                })
-                $("#price_DESC").on("click",function(){
-                    $("#filter").prop("value", "price_DESC");
-                })
-                $("#date_DESC").on("click",function(){
-                    $("#filter").prop("value", "date_DESC");
-                })
-
-                <?php
-                if($_SESSION['username']=="")             
-                    echo '$("#addcart").hide()';
-                ?>
-        });
-    </script>
 
 
 </head>
