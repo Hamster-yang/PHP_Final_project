@@ -12,8 +12,10 @@
     mysqli_query($link, 'SET CHARACTER SET utf8');
     mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
     
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = "";
+    $password = "";
+    $username = $_SESSION['username'];
+    $password = $_SESSION['password'];
     $_SESSION['flag'] = "null";
 
     if ($result = mysqli_query($link, "SELECT * FROM account")) {
@@ -38,15 +40,15 @@
     else
     {
         //資料庫新增存檔
-        if (isset($_POST['username'])) {
-            $sql = "insert into account values ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . $_POST['email'] . "','" . "buyer" . "','" . "銅會員" . "','". $num_cnt ."')";
+        if (isset($_SESSION['username'])) {
+            $sql = "insert into account values ('" . $_SESSION['username'] . "','" . $_SESSION['password'] . "','" . $_SESSION['email'] . "','" . "buyer" . "','" . "銅會員" . "','". $num_cnt ."')";
 
             if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
             {
-                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['username'] = $_SESSION['username'];
                 $_SESSION['user_level'] = "銅會員";
                 $header_mail="From:service@group27.com";
-                mail($_POST['email'],"通識屋 帳號成功註冊通知","您好，恭喜您成功註冊本網站會員\n以下是您的註冊資訊:\n帳號名稱:".$_POST['username']."\n會員等級:銅會員.\n\n通識屋:https://localhost/PHP_Final_project/index.php \n\n如有任何問題，請聯絡客服 service.group27@gmail.com ，我們將盡快協助您，謝謝您\n\n\n[本電子郵件係由系統自動發送，請勿直接回覆本郵件。]",$header_mail)
+                mail($_SESSION['email'],"通識屋 帳號成功註冊通知","您好，恭喜您成功註冊本網站會員\n以下是您的註冊資訊:\n帳號名稱:".$_SESSION['username']."\n會員等級:銅會員.\n\n通識屋:https://localhost/PHP_Final_project/index.php \n\n如有任何問題，請聯絡客服 service.group27@gmail.com ，我們將盡快協助您，謝謝您\n\n\n[本電子郵件係由系統自動發送，請勿直接回覆本郵件。]",$header_mail)
                 or die("郵件傳送失敗！");
                 header("Location:./../buyer.php");
             } else {

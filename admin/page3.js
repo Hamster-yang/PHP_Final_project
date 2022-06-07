@@ -24,7 +24,22 @@ $(function() {
       var data = tbl.row($(this).closest('tr')).data();
       $('#order_user').val(data[0]);
       $('#order_goodNo').val(data[1]);
-      $('#order_status').val(data[2]);   
+        if (data[2] == "訂單送出")
+            $('input[name="order_status"][value=訂單送出]').prop('checked', true);
+        else if(datap[2] == "賣家訂單處理中")
+            $('input[name="order_status"][value=賣家訂單處理中]').prop('checked', true);  
+        else if(datap[2] == "等待物流配送")
+            $('input[name="order_status"][value=等待物流配送]').prop('checked', true);  
+        else if(datap[2] == "物流配送中")
+            $('input[name="order_status"][value=物流配送中]').prop('checked', true);  
+        else if(datap[2] == "等待買家收貨")
+            $('input[name="order_status"][value=等待買家收貨]').prop('checked', true);  
+        else if(datap[2] == "交易完成")
+            $('input[name="order_status"][value=交易完成]').prop('checked', true);  
+        else if(datap[2] == "買家取消訂單")
+            $('input[name="order_status"][value=買家取消訂單]').prop('checked', true);  
+        else if(datap[2] == "系統取消交易")
+            $('input[name="order_status"][value=系統取消交易]').prop('checked', true);  
       $("#stud_no_old").val(data[0]);
       $("#oper").val("update");
    });
