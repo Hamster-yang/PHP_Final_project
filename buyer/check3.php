@@ -32,7 +32,7 @@
         {
             if ($num = mysqli_num_rows($result))	
             {
-                echo "<script> {window.alert('您以下單');history.go(0)} </script>";//返回上頁
+                echo "<script> {window.alert('您有重複下單，請確認後重新下單');history.go(0)} </script>";//返回上頁
             }
             else
             {
