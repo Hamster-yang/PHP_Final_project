@@ -33,7 +33,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
     <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
-
+    
+<!--   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    
+    <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
 
 </head>
 <body class="courses-page">
@@ -91,93 +96,116 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-12">
                 <div class="breadcrumbs">
                     <ul class="flex flex-wrap align-items-center p-0 m-0">
-                        <li><a href="">Level:<?php echo $_SESSION['user_level']?></a></li>
-                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>
+                        <li><a href=""><?php echo $_SESSION['user_level']?></a></li>
+                        <li><a href=""><i class="fa fa-id-card"></i>帳號:<?php echo $_SESSION['username']?></a></li>            
+                    </ul>
+                </div><!-- .breadcrumbs -->
+            </div><!-- .col -->
+        </div>   
+    </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center">
+                
+                <h3>會員資料修改</h3>
+                <form class="form-horizontal form-inline" name="form1" id="form1" method="post">
+                    <input type="hidden" name="oper" id="oper" value="insert">
+                    <input type="hidden" name="stud_no_old" id="stud_no_old" value="">
+                    <table id="edit" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">編號</th>
+                                <th class="text-center">賣家</th>
+                                <th class="text-center">名稱</th>
+                                <th class="text-center">講者</th>
+                                <th class="text-center">時間</th>
+                                <th class="text-center">價格</th>
+                                <th class="text-center">事項1</th>
+                                <th class="text-center">事項2</th>
+                                <th class="text-center">事項3</th>
+                                <th class="text-center">事項4</th>
+                                <th class="text-center">事項5</th>
+                                <th class="text-center">新增/取消</th>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <input type="text" id="goods_id" name="goods_id">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_username" name="goods_username">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_theme" name="goods_theme">                                     
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_lecturer" name="goods_lecturer">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_date" name="goods_date">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_price" name="goods_price">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_one" name="goods_one">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_two" name="goods_two">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_three" name="goods_three">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_four" name="goods_four">
+                                </td>
+                                <td class="text-center">
+                                    <input type="text" id="goods_five" name="goods_five">
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary btn-xs" id="btn-save"><i class="glyphicon glyphicon-save"></i>新增</button>
+                                    <button type="reset" class="btn btn-danger btn-xs" id="btn-cancel">取消</button>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    
+                    <table id="example" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">編號</th>
+                                <th class="text-center">賣家</th>
+                                <th class="text-center">名稱</th>
+                                <th class="text-center">講者</th>
+                                <th class="text-center">時間</th>
+                                <th class="text-center">價格</th>
+                                <th class="text-center">事項1</th>
+                                <th class="text-center">事項2</th>
+                                <th class="text-center">事項3</th>
+                                <th class="text-center">事項4</th>
+                                <th class="text-center">事項5</th>
+                                <th class="text-center">修改/刪除</th>
+                            </tr>
+                        </thead>
+                    </table>
                         
-                    </ul>          
-                </div><!-- .breadcrumbs -->
-            </div><!-- .col -->
-            <div class="col-md-6">
-                <div class="breadcrumbs">
-                    <div style = "text-align:right;">
-                        <button type = submit id = "btn_show" class="astext">排序</button>
-                    </div><!-- .course-cost -->
-                    </footer><!-- .entry-footer -->
-                    <footer id="inner" style="display:none">
-                        <div>
-                            <form name = "f1" method = "POST" action = "">
-                                <p style = "text-align:right;">
-                                    <input type = "hidden" id = "filter" name = "filter">
-                                    <button id = "price_ASC" type = "submit" class="astext">價錢由低到高　</button>
-                                    <button id = "date_ASC" type = "submit" class="astext">日期由舊到新</button>
-                                    <br>
-                                    <button id = "price_DESC" type = "submit" class="astext">價錢由高到低　</button>
-                                    <button id = "date_DESC" type = "submit" class="astext">日期由新到舊</button>
-                                </p>
-                            </form>
-                        </div>
-                    </footer>
-                </div><!-- .breadcrumbs -->
-            </div><!-- .col -->
+                </form>
+            </div><!-- .col-md-8 text-center -->                                           
         </div><!-- .row -->
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="featured-courses courses-wrap">
-                    <div class="row mx-m-25">
-                        <?php
-                            if($result = mysqli_query($link, "SELECT * FROM goods ORDER BY ".$filter))
-                            {
-                                for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
-                                {
-                                    if($i >= $page * 10 - 10 && $i < $page * 10)
-                                    {
-                                        echo '<div class="col-md-12">
-                                            <div class="course-content">
-                                                <div class="course-content-wrap">
-                                                    <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                                                    <header class="entry-header">
-                                                            <h2 class="entry-title"><button class="astext" id="btn_show'.($i % 10).'" >'.$row['theme'].'</button></h2>
-                                                            <div class="entry-meta flex flex-wrap align-items-center">
-                                                                <div class="course-author">'.$row['lecturer'].'</div>
-                                                                <div class="course-date">'.$row['date'].'</div>
-                                                            </div><!-- .course-date -->
-                                                        </header><!-- .entry-header -->
-                                                        <div class="course-cost">
-                                                            $'.$row['price'].' <a id="addcart" class="fa fa-cart-plus" href="./buyer/addgoods.php?good_no='.$row['no'].'"></a>
-                                                        </div><!-- .course-cost -->
-                                                    
-                                                    </footer><!-- .entry-footer -->
-                                                    <footer id="inner'.($i % 10).'"  style="display:none">
-                                                        <div>
-                                                        <h3>詳情</h3> <br>
-                                                        <ul>
-                                                            <li>'.$row['detail_one'].'</li>
-                                                            <li>'.$row['detail_two'].'</li>
-                                                            <li>'.$row['detail_three'].'</li>
-                                                            <li>'.$row['detail_four'].'</li>';
-                                                        if($row['detail_five'] != NULL)
-                                                            echo '<li>'.$row['detail_five'].'</li>';
-                                                        echo '</ul>
-                                                        </div>
-                                                    </footer>
-                                                </div><!-- .course-content-wrap -->
-                                            </div><!-- .course-content -->
-                                        </div><!-- .col -->';
-                                    }
-                                }
-                            }
-                        ?>
-                    </div><!-- .row -->
-                </div><!-- .featured-courses -->
-            </div>
-        </div>            
-    </div>
+        <div class="col-12"></div>
    
-    <script type='text/javascript' src='../js/jquery.js'></script>
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
+    <script src="./page2.js"></script>
+    <!--<script type='text/javascript' src='../js/jquery.js'></script>-->
     <script type='text/javascript' src='../js/swiper.min.js'></script>
     <script type='text/javascript' src='../js/masonry.pkgd.min.js'></script>
     <script type='text/javascript' src='../js/jquery.collapsible.min.js'></script>
