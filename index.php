@@ -171,7 +171,7 @@ if (isset($_POST['name'])) {
                             {
                                 for($i = 1; $row = mysqli_fetch_assoc($result); $i++)
                                 {
-                                    $a=rand(1,6);
+                                    $a=rand(1,7);
                                     echo '<h3 class="comments-title"><span class="comments-number">'.$i. 'Comments</span></h3>
                                     <ol class="comment-list">
                                         <li class="comment">
