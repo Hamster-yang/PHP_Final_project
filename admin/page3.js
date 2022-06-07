@@ -9,7 +9,7 @@ $(function() {
       "paginate": true, //是否分頁
       "lengthChange": true,
       "ajax": {
-            url: "./page1_db_ajax.php",
+            url: "./page3_db_ajax.php",
             data: function(d) {
                   return $('#form1').serialize() + "&oper=query";
             },
@@ -22,10 +22,9 @@ $(function() {
    //修改
    $('tbody').on('click', '#btn_update', function() {
       var data = tbl.row($(this).closest('tr')).data();
-      $('#user_id').val(data[0]);
-      $('#user_name').val(data[1]);
-      $('#user_email').val(data[2]);
-      $('#user_level').val(data[3]);      
+      $('#order_user').val(data[0]);
+      $('#order_goodNo').val(data[1]);
+      $('#order_status').val(data[2]);   
       $("#stud_no_old").val(data[0]);
       $("#oper").val("update");
    });
@@ -52,23 +51,20 @@ $(function() {
             CRUD();
       },
       rules: {
-            user_id: {
+            order_user: {
                   required: true
             },
-            user_name: {
+            order_goodNo: {
                   required: true
             },
-            user_email: {
-                  required: true
-            },
-            user_level: {
+            order_status: {
                   required: true
             }
       }
    });
    function CRUD() {
       $.ajax({
-            url: "./page1_db_ajax.php",
+            url: "./page3_db_ajax.php",
             data: $("#form1").serialize(),
             type: 'POST',
             dataType: "json",

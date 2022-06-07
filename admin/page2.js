@@ -5,7 +5,7 @@ $(function() {
       "scrollX": false,
       "scrollY": false,
       "scrollCollapse": false, //當筆數小於scrillY高度時,自動縮小
-      "displayLength": 10,
+      "displayLength": 5,
       "paginate": true, //是否分頁
       "lengthChange": true,
       "ajax": {

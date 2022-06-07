@@ -1,9 +1,25 @@
 <?php
     session_start();
+
     if($_SESSION['user_level']!="Admin")
     {
         header("Location:./index.php");
     }
+
+    $link = mysqli_connect('localhost','root','root123456','group_27') or die("無法開啟MySQL資料庫連結!<br>");
+    $rows="";
+    $num= "null";
+    mysqli_query($link, 'SET CHARACTER SET utf8');
+    mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
+    if ($result = mysqli_query($link, "SELECT * FROM account")) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $rows .= "<tr><td>" . $row["username"] . "</td><td>" . $row["type"] . "</td><td>"  . $row["level"] . "</td></tr>";
+        }
+        $num = mysqli_num_rows($result);
+        mysqli_free_result($result); // 釋放佔用的記憶體
+    }
+    mysqli_close($link); // 關閉資料庫連結
+
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +33,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-
+    
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="../css/font-awesome.min.css">
-
+    
     <!-- ElegantFonts CSS -->
     <link rel="stylesheet" href="../css/elegant-fonts.css">
 
@@ -32,14 +48,40 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
-    <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
     
-<!--   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
     
     <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
     
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
+    
+    
+    
 
+    <link rel="icon" href="./../images/home.ico" type="image/x-icon" />
+    <style type="text/css">
+        .error {
+                color: #D82424;
+                font-weight: normal;
+                font-family: "微軟正黑體";
+                display: inline;
+                padding: 1px;
+        }
+        table {
+            width: 500px;
+            border: 1px green solid;
+            border-collapse: collapse;
+        }
+
+        tr, td, th {
+            border: 1px blue solid;
+            text-align: center
+        }
+        caption{
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body class="courses-page">
     <div class="page-header">
@@ -60,8 +102,8 @@
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                                     <li><a href="../admin.php">主頁　</a></li>
                                     <li><a href="./page1.php">修改會員資料　</a></li>
-                                    <li class="current-menu-item"><a href="./page2.php">商品管理　</a></li>
-                                    <li><a href="./page3.php">購物車管理　</a></li>
+                                    <li><a href="./page2.php">商品管理　</a></li>
+                                    <li class="current-menu-item"><a href="./page3.php">購物車管理　</a></li>
                                     <li><a href="./../logout.php">登出　</a></li>
                                 </ul>
 
@@ -72,8 +114,8 @@
                                     <span></span>
                                 </div><!-- .hamburger-menu -->
 
-                                <div class="header-bar-cart">                                    
-                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="　"></span></a>                                    
+                                <div class="header-bar-cart">
+                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="　"></span></a>
                                 </div><!-- .header-bar-search -->
                             </nav><!-- .site-navigation -->
                         </div><!-- .col -->
@@ -118,52 +160,20 @@
                     <table id="edit" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th class="text-center">編號</th>
-                                <th class="text-center">賣家</th>
-                                <th class="text-center">名稱</th>
-                                <th class="text-center">講者</th>
-                                <th class="text-center">時間</th>
-                                <th class="text-center">價格</th>
-                                <th class="text-center">事項1</th>
-                                <th class="text-center">事項2</th>
-                                <th class="text-center">事項3</th>
-                                <th class="text-center">事項4</th>
-                                <th class="text-center">事項5</th>
+                                <th class="text-center">買家</th>
+                                <th class="text-center">商品編號</th>
+                                <th class="text-center">狀態</th>                                
                                 <th class="text-center">新增/取消</th>
                             </tr>
                             <tr>
                                 <td class="text-center">
-                                    <input type="text" id="goods_id" name="goods_id">
+                                    <input type="text" id="order_user" name="order_user">
                                 </td>
                                 <td class="text-center">
-                                    <input type="text" id="goods_username" name="goods_username">
+                                    <input type="text" id="order_goodNo" name="order_goodNo">
                                 </td>
                                 <td class="text-center">
-                                    <input type="text" id="goods_theme" name="goods_theme">                                     
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_lecturer" name="goods_lecturer">
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_date" name="goods_date">
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_price" name="goods_price">
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_one" name="goods_one">
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_two" name="goods_two">
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_three" name="goods_three">
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_four" name="goods_four">
-                                </td>
-                                <td class="text-center">
-                                    <input type="text" id="goods_five" name="goods_five">
+                                    <input type="text" id="order_status" name="order_status">                                     
                                 </td>
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-xs" id="btn-save"><i class="glyphicon glyphicon-save"></i>新增</button>
@@ -176,17 +186,9 @@
                     <table id="example" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th class="text-center">編號</th>
-                                <th class="text-center">賣家</th>
-                                <th class="text-center">名稱</th>
-                                <th class="text-center">講者</th>
-                                <th class="text-center">時間</th>
-                                <th class="text-center">價格</th>
-                                <th class="text-center">事項1</th>
-                                <th class="text-center">事項2</th>
-                                <th class="text-center">事項3</th>
-                                <th class="text-center">事項4</th>
-                                <th class="text-center">事項5</th>
+                                <th class="text-center">買家</th>
+                                <th class="text-center">商品編號</th>
+                                <th class="text-center">狀態</th>    
                                 <th class="text-center">修改/刪除</th>
                             </tr>
                         </thead>
@@ -197,7 +199,9 @@
         </div><!-- .row -->
 
         <div class="col-12"></div>
-   
+            
+
+
     <script src="//code.jquery.com/jquery-3.3.1.js"></script>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
@@ -205,7 +209,7 @@
     <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_zh_TW.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
-    <script src="./page2.js"></script>
+    <script src="./page3.js"></script>
     <!--<script type='text/javascript' src='../js/jquery.js'></script>-->
     <script type='text/javascript' src='../js/swiper.min.js'></script>
     <script type='text/javascript' src='../js/masonry.pkgd.min.js'></script>

@@ -32,7 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="../css/font-awesome.min.css">
@@ -49,7 +49,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style2.css">
     
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
     
     <link href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
     
@@ -103,6 +103,7 @@
                                     <li><a href="../admin.php">主頁　</a></li>
                                     <li class="current-menu-item"><a href="./page1.php">修改會員資料　</a></li>
                                     <li><a href="./page2.php">商品管理　</a></li>
+                                    <li><a href="./page3.php">購物車管理　</a></li>
                                     <li><a href="./../logout.php">登出　</a></li>
                                 </ul>
 
