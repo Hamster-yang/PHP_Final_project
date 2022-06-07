@@ -124,8 +124,8 @@
                             <nav class="site-navigation flex justify-content-end align-items-center">
                                 <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
                                     <li><a href="../buyer.php">主頁　</a></li>
-                                    <li class="current-menu-item"><a href="./shopcart.php">購物車　</a></li>
-                                    <li ><a href="../buyer/order.php">訂單　</a></li>
+                                    <li ><a href="./shopcart.php">購物車　</a></li>
+                                    <li class="current-menu-item"><a href="../buyer/order.php">訂單　</a></li>
                                     <li ><a href="./system.php">會員中心　</a></li>                                    
                                     <?php
                                         if ($_SESSION['username']!="")
