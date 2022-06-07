@@ -122,14 +122,8 @@
                                 <th class="text-center">賣家</th>
                                 <th class="text-center">名稱</th>
                                 <th class="text-center">講者</th>
-                                <th class="text-center">時間</th>
-                                <th class="text-center">價格</th>
-                                <th class="text-center">事項1</th>
-                                <th class="text-center">事項2</th>
-                                <th class="text-center">事項3</th>
-                                <th class="text-center">事項4</th>
-                                <th class="text-center">事項5</th>
-                                <th class="text-center">新增/取消</th>
+                                
+                                
                             </tr>
                             <tr>
                                 <td class="text-center">
@@ -143,7 +137,15 @@
                                 </td>
                                 <td class="text-center">
                                     <input type="text" id="goods_lecturer" name="goods_lecturer">
-                                </td>
+                                </td>                                                                
+                            </tr>
+                            <tr>
+                                <th class="text-center">時間</th>
+                                <th class="text-center">價格</th>
+                                <th class="text-center">事項1</th>
+                                <th class="text-center">事項2</th>                                
+                            </tr>
+                            <tr>
                                 <td class="text-center">
                                     <input type="text" id="goods_date" name="goods_date">
                                 </td>
@@ -155,7 +157,15 @@
                                 </td>
                                 <td class="text-center">
                                     <input type="text" id="goods_two" name="goods_two">
-                                </td>
+                                </td>                                
+                            </tr>
+                            <tr>                                
+                                <th class="text-center">事項3</th>
+                                <th class="text-center">事項4</th>
+                                <th class="text-center">事項5</th>
+                                <th class="text-center">新增/取消</th>
+                            </tr>
+                            <tr>                                
                                 <td class="text-center">
                                     <input type="text" id="goods_three" name="goods_three">
                                 </td>
@@ -173,7 +183,7 @@
                         </thead>
                     </table>
                     
-                    <table id="example" class="table table-striped table-bordered">
+                    <table id="example" class="table table-striped table-bordered" style="width: 1000px;">
                         <thead>
                             <tr>
                                 <th class="text-center">編號</th>

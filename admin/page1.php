@@ -187,7 +187,7 @@
                         </thead>
                     </table>
                     
-                    <table id="example" class="table table-striped table-bordered">
+                    <table id="example" class="table table-striped table-bordered" style="width: 1000px;">
                         <thead>
                             <tr>
                                 <th class="text-center">編號</th>

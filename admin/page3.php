@@ -157,12 +157,12 @@
                 <form class="form-horizontal form-inline" name="form1" id="form1" method="post">
                     <input type="hidden" name="oper" id="oper" value="insert">
                     <input type="hidden" name="stud_no_old" id="stud_no_old" value="">
-                    <table id="edit" class="table table-striped table-bordered">
+                    <table id="edit" class="table table-striped table-bordered width=500">
                         <thead>
                             <tr>
                                 <th class="text-center">買家</th>
                                 <th class="text-center">商品編號</th>
-                                <th class="text-center">狀態</th>                                
+                                <th class="text-center" colspan ="2">狀態</th>                                
                                 <th class="text-center">新增/取消</th>
                             </tr>
                             <tr>
@@ -172,8 +172,18 @@
                                 <td class="text-center">
                                     <input type="text" id="order_goodNo" name="order_goodNo">
                                 </td>
-                                <td class="text-center">
-                                    <input type="text" id="order_status" name="order_status">                                     
+                                
+                                <td class="text-left">
+                                    <input type="radio" id="order_status" name="order_status" value='訂單送出'> 訂單送出<br>
+                                    <input type="radio" id="order_status" name="order_status" value='賣家訂單處理中'> 賣家訂單處理中<br>
+                                    <input type="radio" id="order_status" name="order_status" value='等待物流配送'> 等待物流配送<br>
+                                    <input type="radio" id="order_status" name="order_status" value='物流配送中'> 物流配送中<br>                                    
+                                </td>
+                                <td class="text-left">                                    
+                                    <input type="radio" id="order_status" name="order_status" value='等待買家收貨'> 等待買家收貨<br>
+                                    <input type="radio" id="order_status" name="order_status" value='交易完成'> 交易完成<br>
+                                    <input type="radio" id="order_status" name="order_status" value='買家取消訂單'> 買家取消訂單<br>
+                                    <input type="radio" id="order_status" name="order_status" value='系統取消交易'> 系統取消交易<br>
                                 </td>
                                 <td>
                                     <button type="submit" class="btn btn-primary btn-xs" id="btn-save"><i class="glyphicon glyphicon-save"></i>新增</button>
@@ -183,7 +193,7 @@
                         </thead>
                     </table>
                     
-                    <table id="example" class="table table-striped table-bordered">
+                    <table id="example" class="table table-striped table-bordered " style="width: 1000px;">
                         <thead>
                             <tr>
                                 <th class="text-center">買家</th>
