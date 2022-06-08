@@ -30,13 +30,14 @@
     {
         while ($row = mysqli_fetch_assoc($result)) 
         {
-            if ($num = mysqli_num_rows($result))	
+            $goods = $row['good_no'];
+            $resulttt = mysqli_query($link, "SELECT * FROM orders o WHERE o.buyer = $no and o.good_no = $goods");
+            if ($num = mysqli_num_rows($resulttt))	
             {
-                echo "<script> {window.alert('您有重複下單，請確認後重新下單');history.go(0)} </script>";//返回上頁
+                echo "<script> {window.alert('已取消重複下單的商品，請確認訂單資訊');history.go(0)} </script>";//返回上頁
             }
             else
             {
-                $goods = $row['good_no'];
                 $sql = "insert into orders values ('".$no."','".$goods."','配送中')";	 
                 mysqli_query($link, $sql);
             }
