@@ -40,6 +40,11 @@
         $filter = "date ASC";
     if(isset($_GET['good_no']))
         $result = mysqli_query($link, "DELETE FROM goods WHERE `no` = ".$_GET['good_no']);
+
+    if(!isset($_SESSION['search']))
+        $_SESSION['search'] = "";
+    if(isset($_POST['search']))
+        $_SESSION['search'] = $_POST['search'];
 ?>
 
 <!DOCTYPE html>
@@ -186,7 +191,20 @@
             <div class="col-md-6">
                 <div class="breadcrumbs">
                     <div style = "text-align:right;">
-                        <button type = submit id = "btn_show" class="astext">排序</button>
+                        <div class = "header-bar-search">
+                            <form name = "f2" method = "POST" action = "" class="align-items-stretch">
+                                <p style = "text-align:right;">
+                                    <input type="search" placeholder="" id = "search" name = "search" style="width:280px;height:40px;">
+                                    <?php
+                                        if($_SESSION['search'] == '')
+                                            echo '<button type="submit" value="" style="width:40px;height:40px;"><i class="fa fa-search"></i></button>';
+                                        else
+                                            echo '<button type="submit" value="" style="width:40px;height:40px;"><i class="fa fa-remove"></i></button>';
+                                    ?>
+                                </p>
+                            </form>
+                        </div>
+                        <button type = "submit" id = "btn_show" class="astext">排序</button>
                     </div><!-- .course-cost -->
                     </footer><!-- .entry-footer -->
                     <footer id="inner" style="display:none">
@@ -212,7 +230,7 @@
                 <div class="featured-courses courses-wrap">
                     <div class="row mx-m-25">
                         <?php
-                            if($result = mysqli_query($link, "SELECT * FROM goods WHERE `username` = '".$_SESSION['username']."' ORDER BY ".$filter))
+                            if($result = mysqli_query($link, "SELECT * FROM goods WHERE `username` = '".$_SESSION['username']."' and `theme` LIKE '%".$_SESSION['search']."%' ORDER BY ".$filter))
                             {
                                 for($i = 0; $row = mysqli_fetch_assoc($result); $i++)
                                 {
