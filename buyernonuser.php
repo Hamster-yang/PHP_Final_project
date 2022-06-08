@@ -213,11 +213,16 @@
             <div class="col-md-6">
                 <div class="breadcrumbs">
                     <div style = "text-align:right;">
-                        <div>
-                            <form name = "f2" method = "POST" action = "">
+                        <div class = "header-bar-search">
+                            <form name = "f2" method = "POST" action = "" class="align-items-stretch">
                                 <p style = "text-align:right;">
-                                    <input type="search" placeholder="" id = "search" name = "search">
-                                    <button type="submit" value=""><i class="fa fa-search"></i></button>
+                                    <input type="search" placeholder="" id = "search" name = "search" style="width:280px;height:40px;">
+                                    <?php
+                                        if($_SESSION['search'] == '')
+                                            echo '<button type="submit" value="" style="width:40px;height:40px;"><i class="fa fa-search"></i></button>';
+                                        else
+                                            echo '<button type="submit" value="" style="width:40px;height:40px;"><i class="fa fa-remove"></i></button>';
+                                    ?>
                                 </p>
                             </form>
                         </div>
