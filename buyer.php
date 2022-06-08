@@ -219,7 +219,12 @@
                             <form name = "f2" method = "POST" action = "">
                                 <p style = "text-align:right;">
                                     <input type="search" placeholder="" id = "search" name = "search">
-                                    <button type="submit" value=""><i class="fa fa-search"></i></button>
+                                    <?php
+                                        if($_SESSION['search'] == '')
+                                            echo '<button type="submit" value=""><i class="fa fa-search"></i></button>';
+                                        else
+                                            echo '<button type="submit" value=""><i class="fa fa-remove"></i></button>';
+                                    ?>
                                 </p>
                             </form>
                         </div>
