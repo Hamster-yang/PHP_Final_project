@@ -223,7 +223,7 @@
             <div class="col-12">
                 <div class="contact-form">
                     
-                    <h4>您的會員等級:<span>鑽</span></h4>
+                    <h4>您的會員等級:<span><?php echo $_SESSION['user_level'] ?></span></h4>
                     <h5>會員福利</h5>
                     <ul>
                         <li>可查看購物商品詳細內容</li>
@@ -231,12 +231,32 @@
                         <li>客服服務</li>
                     </ul>
 
-                    <h5>鑽會員專屬福利</h5>
-                    <ul>
-                        <li>享有平台交易手續費減免</li>
-                        <li>享有商品正式上架前25分鐘優先購買權</li>
-                        <li>開放賣家系統(可上架商品)</li>
-                    </ul>
+                    <?php
+                        if($_SESSION['user_level'] != '銅會員')
+                            echo '<h5>'.$_SESSION['user_level'].'專屬服務</h5>';
+                        if($_SESSION['user_level'] == '鑽會員')
+                        {
+                            echo '<ul>
+                                <li>享有平台交易手續費減免</li>
+                                <li>享有商品正式上架前25分鐘優先購買權</li>
+                                <li>開放賣家系統(可上架商品)</li>
+                            </ul>';
+                        }
+                        else if($_SESSION['user_level'] == '金會員')
+                        {
+                            echo '<ul>
+                                <li>享有平台交易手續費折扣</li>
+                                <li>享有商品正式上架前5分鐘優先購買權</li>
+                                <li>開放賣家系統(可上架商品)</li>
+                            </ul>';
+                        }
+                        else if($_SESSION['user_level'] == '銀會員')
+                        {
+                            echo '<ul>
+                                <li>開放賣家系統(可上架商品)</li>
+                            </ul>';
+                        }
+                    ?>
                 </div><!-- .contact-form -->
             </div><!-- .col -->
 
