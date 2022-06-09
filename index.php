@@ -21,8 +21,7 @@ mysqli_query($link, "SET collation_connection = 'utf8_unicode_ci'");
 //資料庫新增存檔
 if (isset($_POST['name'])) {    
     $stamps = time();
-    $file = "";
-    $file_type = "";
+
     $name = $_POST['name'];
     $message = $_POST['message'];
     $today = getdate($stamps);
@@ -34,7 +33,7 @@ if (isset($_POST['name'])) {
     $today = getdate($stamps);
     $day = $today['mday'];
 
-    $sql = "insert into message_board values ('$name','$message','$file_type','$file','$year"."-".$month."-"."$day')";
+    $sql = "insert into message_board values ('$name','$message','$year"."-".$month."-"."$day')";
 
     if ($result = mysqli_query($link, $sql)) // 送出查詢的SQL指令
     {
