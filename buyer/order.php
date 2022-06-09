@@ -206,7 +206,7 @@
                                             <td class="align-middle">'.$row['theme'].'</td>
                                             <td colspan="3" scope="col"></td>
                                             <td class="align-middle text-right">'.$row['status'].'</td>
-                                            <td><span><a href = "#"><font color = cyan>申請退貨</a></span></td>
+                                            <td><span><a href = "../buyer/cancel.php?buyer='.$row['buyer'].'&good='.$row['good_no'].'" id = "cancel"><font color = cyan>申請退貨</a></span></td>
                                             </tr>';
                                         }
                                     } 
