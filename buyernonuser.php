@@ -306,16 +306,16 @@
                                 {
                                     if($i == $page)
                                     {
-                                        echo '<li class="active"><a href="buyer.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
+                                        echo '<li class="active"><a href="buyernonuser.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
                                     }
                                     else
                                     {
-                                        echo '<li class="fa"><a href="buyer.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
+                                        echo '<li class="fa"><a href="buyernonuser.php?page='.$i.'&filter='.$filter.'">'.$i.'</a></li>';
                                     }
                                 }
                                 if($page < mysqli_num_rows($result) / 10)
                                 {
-                                    echo '<li><a href="buyer.php?page='.($page+1).'&filter='.$filter.'"><i class="fa fa-angle-right"></i></a></li>';
+                                    echo '<li><a href="buyernonuser.php?page='.($page+1).'&filter='.$filter.'"><i class="fa fa-angle-right"></i></a></li>';
                                 }
                             ?>
                         </ul>
