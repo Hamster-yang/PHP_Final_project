@@ -166,12 +166,12 @@ if (isset($_POST['name'])) {
 
                     <?php
                             
-                            if($result = mysqli_query($link, "SELECT * FROM message_board"))
+                            if($result = mysqli_query($link, "SELECT * FROM message_board ORDER BY whichdate DESC"))
                             {
                                 for($i = 1; $row = mysqli_fetch_assoc($result); $i++)
                                 {
                                     $a=rand(1,7);
-                                    echo '<h3 class="comments-title"><span class="comments-number">'.$i. 'Comments</span></h3>
+                                    echo '<h3 class="comments-title"><span class="comments-number">第'.$i. '則留言</span></h3>
                                     <ol class="comment-list">
                                         <li class="comment">
                                             <article class="comment-body">
@@ -182,7 +182,7 @@ if (isset($_POST['name'])) {
                                                 <div class="comment-wrap">
                                                     <div class="comment-author">
                                                         <span class="comment-meta d-block">
-                                                            <a href="#">'.$row['date'].'</a>
+                                                            <a href="#">'.$row['whichdate'].'</a>
                                                         </span><!-- .comment-meta -->
     
                                                         <span class="fn">
