@@ -234,9 +234,9 @@
                                                           <td><span><input type="radio" name="way" value = "1"/>
                                                                 貨到付款</span>
                                                             <span><input type="radio" id="radioo" name="way" value = "2"/>
-                                                                信用卡</span> <input type="text" style="display:none" id="radioo_in1">
-                                                                <input type="text" style="display:none" id="radioo_in2">
-                                                                <input type="text" style="display:none" id="radioo_in3"></td>
+                                                                信用卡</span> <input type="text" style="display:none" id="radioo_in1" >
+                                                                <input type="text" style="display:none" id="radioo_in2" >
+                                                                <input type="text" style="display:none" id="radioo_in3"></td >
                                                       </tr>
                                                       <tr >
                                                         <td colspan = "2">

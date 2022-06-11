@@ -38,7 +38,7 @@
             }
             else
             {
-                $sql = "insert into orders values ('".$no."','".$goods."','配送中')";	 
+                $sql = "insert into orders values ('".$no."','".$goods."','物流配送中')";	 
                 mysqli_query($link, $sql);
             }
         }

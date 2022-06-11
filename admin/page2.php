@@ -111,7 +111,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 text-center">
                 
-                <h3>會員資料修改</h3>
+                <h3>商品資料修改</h3>
                 <form class="form-horizontal form-inline" name="form1" id="form1" method="post">
                     <input type="hidden" name="oper" id="oper" value="insert">
                     <input type="hidden" name="stud_no_old" id="stud_no_old" value="">

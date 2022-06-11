@@ -153,7 +153,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 text-center">
                 
-                <h3>會員資料修改</h3>
+                <h3>訂單資料修改</h3>
                 <form class="form-horizontal form-inline" name="form1" id="form1" method="post">
                     <input type="hidden" name="oper" id="oper" value="insert">
                     <input type="hidden" name="stud_no_old" id="stud_no_old" value="">
@@ -182,7 +182,7 @@
                                 <td class="text-left">                                    
                                     <input type="radio" id="order_status" name="order_status" value='等待買家收貨'> 等待買家收貨<br>
                                     <input type="radio" id="order_status" name="order_status" value='交易完成'> 交易完成<br>
-                                    <input type="radio" id="order_status" name="order_status" value='買家取消訂單'> 買家取消訂單<br>
+                                    <input type="radio" id="order_status" name="order_status" value='申請退貨中'> 申請退貨中<br>
                                     <input type="radio" id="order_status" name="order_status" value='系統取消交易'> 系統取消交易<br>
                                 </td>
                                 <td>
